@@ -1,0 +1,23 @@
+:root {
+  color-scheme: light;
+  --paper: #f9f6f0;
+  --ink: #39332e;
+  --faded-ink: #6d6258;
+  --seal-red: #963f35;
+  --line: #ddd2c7;
+  --wash: #f0e9df;
+  --placeholder: #d8d8d8;
+  --placeholder-ink: #505050;
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --paper: #24211e;
+  --ink: #f9f6f0;
+  --faded-ink: #c0b2a4;
+  --seal-red: #f1a499;
+  --line: #584d44;
+  --wash: #312b26;
+  --placeholder: #36312d;
+  --placeholder-ink: #e0d4c9;
+}

@@ -1,0 +1,23 @@
+.photo-page {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  text-align: center;
+  padding: clamp(16px, 5.7svh, 58px) 16px clamp(16px, 8svh, 72px);
+}
+
+.photo-page h1 {
+  margin: 0;
+  font: 400 clamp(44px, min(10vw, 12svh), 110px)/1 var(--serif);
+  letter-spacing: -.025em;
+}
+
+.photo-placeholder {
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 4px;
+  color: var(--faded-ink);
+  font-size: clamp(16px, 2.5svh, 22px);
+}
+
+.photo-placeholder p { margin: 0; }

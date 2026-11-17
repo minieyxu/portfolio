@@ -1,0 +1,14 @@
+.about-page, .about-page + footer {
+  width: min(100% - 40px, 700px);
+  margin-inline: auto;
+}
+
+.about-page { padding-block: clamp(40px, 9vw, 100px) 60px; }
+.about-page h1 { margin: 0; font: 400 clamp(52px, 8vw, 92px)/1 var(--serif); }
+.about-lead { font: 400 clamp(27px, 4vw, 38px)/1.2 var(--serif); }
+.about-copy { line-height: 1.75; }
+.resume { margin-top: 28px; }
+.about-page + footer { border-top: 1px solid var(--line); padding-block: 24px 40px; }
+.footer-title { margin: 0; font: 400 32px var(--serif); }
+.socials, .footer-bottom { display: flex; flex-wrap: wrap; gap: 12px 24px; font-size: 13px; }
+.footer-bottom { margin-top: 24px; color: var(--faded-ink); }

@@ -1,0 +1,31 @@
+@layer reset, theme, base, astryx-base, astryx-theme, components, utilities;
+
+@import 'tailwindcss' source(none);
+@import './theme.css' layer(theme);
+@import '@astryxdesign/core/astryx.css';
+@import '@astryxdesign/theme-neutral/theme.css';
+
+@source './case-study.jsx';
+@source './feeling_in_between_warm_editorial.html';
+
+@theme inline {
+  --font-sans: 'DM Sans', system-ui, sans-serif;
+  --font-serif: 'Instrument Serif', Georgia, serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-muted: var(--faded-ink);
+  --color-rule: var(--line);
+  --color-wash: var(--wash);
+  --color-seal: var(--seal-red);
+}
+
+@layer base {
+  body {
+    @apply bg-paper font-sans text-ink antialiased;
+  }
+
+  :where(a, button):focus-visible {
+    @apply outline-2 outline-offset-4 outline-seal;
+  }
+}
