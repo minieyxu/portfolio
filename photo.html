@@ -13,23 +13,8 @@
   <link rel="stylesheet" href="./site.css">
   <link rel="stylesheet" href="./photo.css">
 </head>
-<body class="pinned-page">
-  <a class="skip-link" href="#main">Skip to content</a>
-  <header class="site-header">
-    <a class="wordmark" href="index.html" aria-label="Minie Xu, home"><span class="full-name">minie xu</span><span class="short-name">mx</span><img src="./assets/seal.png" width="36" height="36" alt=""></a>
-    <nav aria-label="Main navigation">
-      <a href="index.html">Home</a>
-      <a href="work.html#work">Projects</a>
-      <a href="photo.html" aria-current="page">Photo</a>
-      <a href="about.html">About</a>
-    </nav>
-  </header>
-  <main id="main" class="photo-page">
-    <h1>Photo</h1>
-    <div class="photo-placeholder">
-      <img class="coming-soon-icon" src="./assets/ui/coming-soon.png" width="192" height="192" alt="">
-      <p>coming soon</p>
-    </div>
-  </main>
+<body>
+  <div id="root" class="pinned-page"></div>
+  <script type="module" src="./photo.jsx"></script>
 </body>
 </html>
