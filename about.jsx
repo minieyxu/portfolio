@@ -1,23 +1,11 @@
 import { createRoot } from 'react-dom/client';
-import seal from './assets/seal.png';
+import Header from './components/Header.jsx';
 
 function About() {
   return (
     <>
       <a className="skip-link" href="#main">Skip to content</a>
-      <header className="site-header">
-        <a className="wordmark" href="index.html" aria-label="Minie Xu, home">
-          <span className="full-name">minie xu</span>
-          <span className="short-name">mx</span>
-          <img src={seal} width="36" height="36" alt="" />
-        </a>
-        <nav aria-label="Main navigation">
-          <a href="index.html">Home</a>
-          <a href="work.html#work">Projects</a>
-          <a href="photo.html">Photo</a>
-          <a href="about.html" aria-current="page">About</a>
-        </nav>
-      </header>
+      <Header currentPage="about" />
       <main id="main" className="about-page" tabIndex="-1">
         <section id="about" className="about" aria-labelledby="about-heading">
           <h1 id="about-heading">A little about me</h1>
