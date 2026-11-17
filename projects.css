@@ -4,18 +4,19 @@
   display: grid;
   grid-template-rows: auto minmax(0, 1fr);
   gap: clamp(12px, 5.5svh, 52px);
-  padding: clamp(12px, 5.7svh, 58px) clamp(17px, 3.7vw, 54px) clamp(16px, 5svh, 48px);
+  padding: clamp(12px, 5.7svh, 58px) clamp(17px, 3.7vw, 54px)
+    clamp(16px, 5svh, 48px);
   text-align: center;
 }
 
 .projects-heading h1 {
   margin: 0;
   font: 400 clamp(44px, min(10vw, 12svh), 110px)/1 var(--serif);
-  letter-spacing: -.025em;
+  letter-spacing: -0.025em;
 }
 
 .projects-heading p {
-  margin: .55em 0 0;
+  margin: 0.55em 0 0;
   font-size: clamp(15px, 2.2svh, 21px);
   font-weight: 700;
 }
@@ -45,12 +46,17 @@
   font-weight: 700;
   line-height: 1.25;
   text-decoration: underline;
-  text-underline-offset: .15em;
+  text-underline-offset: 0.15em;
 }
 
-a.project-card:hover h2 { color: var(--seal-red); }
+a.project-card:hover h2 {
+  color: var(--seal-red);
+}
 
-.project-frame { background: var(--placeholder); overflow: clip; }
+.project-frame {
+  background: var(--placeholder);
+  overflow: clip;
+}
 
 .project-frame > img:not(.coming-soon-icon) {
   display: block;
@@ -69,10 +75,15 @@ a.project-card:hover h2 { color: var(--seal-red); }
   font-size: clamp(14px, 2.5svh, 22px);
 }
 
-.project-placeholder p { margin: 0; }
+.project-placeholder p {
+  margin: 0;
+}
 
 @media (max-width: 660px) and (orientation: portrait) {
-  .projects-page { gap: clamp(12px, 3.5svh, 28px); padding-block: clamp(14px, 3.5svh, 28px); }
+  .projects-page {
+    gap: clamp(12px, 3.5svh, 28px);
+    padding-block: clamp(14px, 3.5svh, 28px);
+  }
   .projects-grid {
     grid-template-columns: minmax(0, 1fr);
     grid-template-rows: repeat(2, minmax(0, 1fr));
@@ -81,11 +92,20 @@ a.project-card:hover h2 { color: var(--seal-red); }
     max-height: 650px;
     margin-inline: auto;
   }
-  .project-card { gap: clamp(7px, 1.6svh, 14px); }
+  .project-card {
+    gap: clamp(7px, 1.6svh, 14px);
+  }
 }
 
 @media (max-height: 440px) {
-  .projects-page { gap: 12px; padding-block: 10px 14px; }
-  .projects-grid { max-height: none; }
-  .project-card { gap: 8px; }
+  .projects-page {
+    gap: 12px;
+    padding-block: 10px 14px;
+  }
+  .projects-grid {
+    max-height: none;
+  }
+  .project-card {
+    gap: 8px;
+  }
 }

@@ -46,13 +46,13 @@ Static hosting publishes the contents of `dist/`. The site has five HTML entry p
 
 ## Files
 
-| Page | HTML entry point | React entry point |
-| --- | --- | --- |
-| Home | `index.html` | `homepage.jsx` |
-| Projects | `work.html` | `projects.jsx` |
-| Photo | `photo.html` | `photo.jsx` |
-| About | `about.html` | `about.jsx` |
-| Feeling In Between | `feeling_in_between_warm_editorial.html` | `case-study.jsx` |
+| Page               | HTML entry point                         | React entry point |
+| ------------------ | ---------------------------------------- | ----------------- |
+| Home               | `index.html`                             | `homepage.jsx`    |
+| Projects           | `work.html`                              | `projects.jsx`    |
+| Photo              | `photo.html`                             | `photo.jsx`       |
+| About              | `about.html`                             | `about.jsx`       |
+| Feeling In Between | `feeling_in_between_warm_editorial.html` | `case-study.jsx`  |
 
 Each HTML entry point provides metadata and an element where React renders the page.
 
@@ -61,6 +61,21 @@ Each HTML entry point provides metadata and an element where React renders the p
 - `public/theme.js` restores the saved theme, handles theme buttons, and announces changes through the `minie-theme-change` browser event.
 - `assets/` contains images imported by React. Home uses `anni-painting.jpeg` on larger screens and `animals.jpg` on smaller screens.
 - `woodland-reference.png` and `homepage-reference.png` are design references.
+
+## Code checks
+
+Prettier keeps indentation, spacing, and quotation marks consistent. ESLint catches JavaScript mistakes, React Hook misuse, and missing or duplicate keys in lists.
+
+| Command             | Purpose                                                         |
+| ------------------- | --------------------------------------------------------------- |
+| `pnpm format`       | Format supported source and documentation files.                |
+| `pnpm format:check` | Check formatting without editing files.                         |
+| `pnpm lint`         | Check JavaScript and JSX for coding errors.                     |
+| `pnpm check`        | Run lint, formatting checks, and the production build in order. |
+
+Before committing, run `pnpm format`, review the changes, and then run `pnpm check`. Fix any reported errors before saving the checkpoint.
+
+The formatting and lint configurations exclude generated output and local package caches. Prettier also skips the pnpm lockfile, which pnpm maintains. TypeScript is installed as a dependency of the React lint tooling; the site source uses JavaScript and JSX.
 
 ## Version control
 

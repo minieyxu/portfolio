@@ -40,28 +40,90 @@ function Home() {
 
   return (
     <>
-      <a className="skip-link" href="#main">Skip to content</a>
+      <a className="skip-link" href="#main">
+        Skip to content
+      </a>
       <Header currentPage="home" />
       <main id="main" className="welcome">
         <section className="introduction" aria-labelledby="welcome-title">
           <h1 id="welcome-title">hello, world.</h1>
-          <p className="name">i’m minie!<img src={seal} width="54" height="54" alt="Minie’s Chinese name seal" /></p>
-          <p className="greeting">feel free to browse around and<br />get to know me!</p>
-          <img className="ascii-portrait" src={portrait} width="566" height="327" alt="" />
+          <p className="name">
+            i’m minie!
+            <img
+              src={seal}
+              width="54"
+              height="54"
+              alt="Minie’s Chinese name seal"
+            />
+          </p>
+          <p className="greeting">
+            feel free to browse around and
+            <br />
+            get to know me!
+          </p>
+          <img
+            className="ascii-portrait"
+            src={portrait}
+            width="566"
+            height="327"
+            alt=""
+          />
         </section>
         <div className="landscape">
           <picture>
-            <source media="(max-width: 650px), (max-width: 950px) and (max-height: 440px)" srcSet={animals} />
-            <img className="painting" src={painting} width="6000" height="1500" fetchPriority="high" alt="An ink painting with a dragon, a dog, a rooster, an ox, and a snake." />
+            <source
+              media="(max-width: 650px), (max-width: 950px) and (max-height: 440px)"
+              srcSet={animals}
+            />
+            <img
+              className="painting"
+              src={painting}
+              width="6000"
+              height="1500"
+              fetchPriority="high"
+              alt="An ink painting with a dragon, a dog, a rooster, an ox, and a snake."
+            />
           </picture>
-          <button className="lantern" data-theme-toggle type="button" aria-label={themeLabel} aria-pressed={dark} title="Toggle the lantern for dark mode"></button>
+          <button
+            className="lantern"
+            data-theme-toggle
+            type="button"
+            aria-label={themeLabel}
+            aria-pressed={dark}
+            title="Toggle the lantern for dark mode"
+          ></button>
         </div>
-        <button className="mobile-theme" data-theme-toggle type="button" aria-label={themeLabel} aria-pressed={dark}>Toggle theme</button>
+        <button
+          className="mobile-theme"
+          data-theme-toggle
+          type="button"
+          aria-label={themeLabel}
+          aria-pressed={dark}
+        >
+          Toggle theme
+        </button>
       </main>
-      <dialog ref={dialog} className="welcome-dialog" aria-labelledby="dialog-title" aria-describedby="dialog-description" onClose={rememberWelcome}>
-        <h2 id="dialog-title">hi! feel free to explore and browse around!<br />ive designed this website to be both<br />interactive and for quick navigation</h2>
-        <p id="dialog-description">Switch between light and dark mode using the lantern or the theme button.</p>
-        <form method="dialog"><button>Lets go!</button></form>
+      <dialog
+        ref={dialog}
+        className="welcome-dialog"
+        aria-labelledby="dialog-title"
+        aria-describedby="dialog-description"
+        onClose={rememberWelcome}
+      >
+        <h2 id="dialog-title">
+          hi! feel free to explore and browse around!
+          <br />
+          ive designed this website to be both
+          <br />
+          interactive and for quick navigation
+        </h2>
+        <p id="dialog-description">
+          Switch between light and dark mode using the lantern or the theme
+          button.
+        </p>
+        <form method="dialog">
+          <button>Lets go!</button>
+        </form>
       </dialog>
     </>
   );
