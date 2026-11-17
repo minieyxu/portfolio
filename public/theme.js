@@ -9,7 +9,10 @@
     if (meta) meta.content = dark ? '#24211e' : '#f9f6f0';
 
     document.querySelectorAll('[data-theme-toggle]').forEach((control) => {
-      control.setAttribute('aria-label', `Switch to ${dark ? 'light' : 'dark'} mode`);
+      control.setAttribute(
+        'aria-label',
+        `Switch to ${dark ? 'light' : 'dark'} mode`,
+      );
       control.setAttribute('aria-pressed', String(dark));
     });
   }
@@ -37,7 +40,11 @@
   });
 
   document.addEventListener('click', (event) => {
-    if (!(event.target instanceof Element) || !event.target.closest('[data-theme-toggle]')) return;
+    if (
+      !(event.target instanceof Element) ||
+      !event.target.closest('[data-theme-toggle]')
+    )
+      return;
     const next = mode === 'dark' ? 'light' : 'dark';
     try {
       localStorage.setItem(key, next);

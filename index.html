@@ -1,50 +1,26 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#F9F6F0">
-  <script src="/theme.js"></script>
-  <meta name="description" content="Hello, world. I’m Minie! Feel free to browse around and get to know me.">
-  <title>minie xu — hello, world.</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Serif&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./site.css">
-  <link rel="stylesheet" href="./homepage.css">
-</head>
-<body class="pinned-page">
-  <a class="skip-link" href="#main">Skip to content</a>
-  <header class="site-header">
-    <a class="wordmark" href="index.html" aria-label="Minie Xu, home"><span class="full-name">minie xu</span><span class="short-name">mx</span><img src="./assets/seal.png" width="36" height="36" alt=""></a>
-    <nav aria-label="Main navigation">
-      <a href="index.html" aria-current="page">Home</a>
-      <a href="work.html#work">Projects</a>
-      <a href="photo.html">Photo</a>
-      <a href="about.html">About</a>
-    </nav>
-  </header>
-  <main id="main" class="welcome">
-    <section class="introduction" aria-labelledby="welcome-title">
-      <h1 id="welcome-title">hello, world.</h1>
-      <p class="name">i’m minie!<img src="./assets/seal.png" width="54" height="54" alt="Minie’s Chinese name seal"></p>
-      <p class="greeting">feel free to browse around and<br>get to know me!</p>
-      <img class="ascii-portrait" src="./assets/home/ascii-portrait.png" width="566" height="327" alt="">
-    </section>
-    <div class="landscape">
-      <picture>
-        <source media="(max-width: 650px), (max-width: 950px) and (max-height: 440px)" srcset="./assets/landscape/animals.jpg">
-        <img class="painting" src="./assets/landscape/anni-painting.jpeg" width="6000" height="1500" fetchpriority="high" alt="An ink painting with a dragon, a dog, a rooster, an ox, and a snake.">
-      </picture>
-      <button class="lantern" data-theme-toggle type="button" aria-label="Switch to dark mode" aria-pressed="false" title="Toggle the lantern for dark mode"></button>
-    </div>
-    <button class="mobile-theme" data-theme-toggle type="button" aria-label="Switch to dark mode" aria-pressed="false">Toggle theme</button>
-  </main>
-  <dialog class="welcome-dialog" aria-labelledby="dialog-title" aria-describedby="dialog-description">
-    <h2 id="dialog-title">hi! feel free to explore and browse around!<br>ive designed this website to be both<br>interactive and for quick navigation</h2>
-    <p id="dialog-description">Switch between light and dark mode using the lantern or the theme button.</p>
-    <form method="dialog"><button>Lets go!</button></form>
-  </dialog>
-  <script type="module" src="./homepage.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#F9F6F0" />
+    <script src="/theme.js"></script>
+    <meta
+      name="description"
+      content="Hello, world. I’m Minie! Feel free to browse around and get to know me."
+    />
+    <title>minie xu — hello, world.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Serif&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./site.css" />
+    <link rel="stylesheet" href="./homepage.css" />
+  </head>
+  <body>
+    <div id="root" class="pinned-page"></div>
+    <script type="module" src="./homepage.jsx"></script>
+  </body>
 </html>

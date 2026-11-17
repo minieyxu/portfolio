@@ -6,12 +6,23 @@
   "scripts": {
     "dev": "vite --host 127.0.0.1",
     "build": "vite build",
-    "preview": "vite preview --host 127.0.0.1"
+    "preview": "vite preview --host 127.0.0.1",
+    "lint": "eslint . --max-warnings 0",
+    "format": "prettier . --write",
+    "format:check": "prettier . --check",
+    "check": "pnpm lint && pnpm format:check && pnpm build"
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "@tailwindcss/vite": "4.3.5",
     "@vitejs/plugin-react": "5.2.0",
+    "eslint": "^10.15.0",
+    "eslint-plugin-react-hooks": "7.1.1",
+    "eslint-plugin-react-x": "5.30.3",
+    "globals": "17.14.0",
+    "prettier": "3.10.1",
     "tailwindcss": "4.3.5",
+    "typescript": "5.9.3",
     "vite": "^7.0.0"
   },
   "packageManager": "pnpm@11.25.0",
