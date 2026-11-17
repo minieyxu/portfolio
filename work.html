@@ -13,38 +13,8 @@
   <link rel="stylesheet" href="./site.css">
   <link rel="stylesheet" href="./projects.css">
 </head>
-<body class="pinned-page">
-  <a class="skip-link" href="#main">Skip to content</a>
-  <header class="site-header">
-    <a class="wordmark" href="index.html" aria-label="Minie Xu, home"><span class="full-name">minie xu</span><span class="short-name">mx</span><img src="./assets/seal.png" width="36" height="36" alt=""></a>
-    <nav aria-label="Main navigation">
-      <a href="index.html">Home</a>
-      <a href="work.html#work" aria-current="page">Projects</a>
-      <a href="photo.html">Photo</a>
-      <a href="about.html">About</a>
-    </nav>
-  </header>
-  <main id="main" class="projects-page" tabindex="-1">
-    <div id="work" class="projects-heading">
-      <h1>Projects</h1>
-      <p>some things i’ve been up to</p>
-    </div>
-    <div class="projects-grid">
-      <a class="project-card" href="feeling_in_between_warm_editorial.html" aria-labelledby="between-title">
-        <div class="project-frame">
-          <img src="./assets/projects/lotus.jpg" width="1600" height="2400" alt="A pink lotus blooming among broad green leaves" fetchpriority="high">
-        </div>
-        <h2 id="between-title">feeling in between</h2>
-      </a>
-      <article class="project-card" aria-labelledby="scent-title">
-        <div class="project-frame project-placeholder">
-          <img class="coming-soon-icon" src="./assets/ui/coming-soon.png" width="192" height="192" alt="">
-          <p>coming soon</p>
-        </div>
-        <h2 id="scent-title">project scent</h2>
-      </article>
-    </div>
-  </main>
-  <script type="module" src="./projects.js"></script>
+<body>
+  <div id="root" class="pinned-page"></div>
+  <script type="module" src="./projects.jsx"></script>
 </body>
 </html>
