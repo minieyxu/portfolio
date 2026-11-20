@@ -22,21 +22,76 @@
   --placeholder-ink: #e0d4c9;
 }
 
-/* Only animate an intentional theme change, never the initial page load. */
+/* Interpolate the shared palette once, so inherited text stays in sync. */
+@property --paper {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #f9f6f0;
+}
+
+@property --ink {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #39332e;
+}
+
+@property --faded-ink {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #6d6258;
+}
+
+@property --seal-red {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #963f35;
+}
+
+@property --line {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #ddd2c7;
+}
+
+@property --wash {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #f0e9df;
+}
+
+@property --placeholder {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #d8d8d8;
+}
+
+@property --placeholder-ink {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #505050;
+}
+
+/* Only intentional theme changes animate; page loading remains immediate. */
 @media (prefers-reduced-motion: no-preference) {
-  :root.theme-changing,
-  :root.theme-changing * {
-    transition-property: background-color, color, border-color, outline-color;
+  :root.theme-changing {
+    transition-property:
+      --paper, --ink, --faded-ink, --seal-red, --line, --wash, --placeholder,
+      --placeholder-ink;
     transition-duration: 320ms;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   :root.theme-changing .theme-switch-thumb {
-    transition-property:
-      transform, background-color, border-color, color, box-shadow;
+    transition:
+      transform 320ms cubic-bezier(0.4, 0, 0.2, 1),
+      background-color 320ms cubic-bezier(0.4, 0, 0.2, 1),
+      border-color 320ms cubic-bezier(0.4, 0, 0.2, 1),
+      box-shadow 320ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  :root.theme-changing img {
-    transition-property: filter;
+  :root.theme-changing .painting,
+  :root.theme-changing .theme-switch img,
+  :root.theme-changing .coming-soon-icon {
+    transition: filter 320ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 }
