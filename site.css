@@ -154,3 +154,122 @@ html:has(.pinned-page),
 :root[data-theme='dark'] .coming-soon-icon {
   filter: brightness(2.8);
 }
+
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: clamp(12px, 2vw, 28px);
+}
+
+.theme-switch {
+  flex: none;
+  display: flex;
+  align-items: center;
+  width: 64px;
+  height: 44px;
+  padding: 4px;
+  border: 1px solid var(--faded-ink);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink);
+  touch-action: manipulation;
+}
+
+.theme-switch-thumb {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--paper);
+}
+
+.theme-switch img {
+  width: 24px;
+  height: 30px;
+  object-fit: contain;
+}
+
+.theme-switch:hover {
+  border-color: var(--ink);
+}
+
+:root[data-theme='dark'] .theme-switch-thumb {
+  transform: translateX(20px);
+  border-color: #e9b35c77;
+  background: #352c22;
+  box-shadow:
+    inset 0 0 8px #ffc96b20,
+    0 0 6px #ffc96b45,
+    0 0 12px #e9b35c28;
+}
+
+:root[data-theme='dark'] .theme-switch img {
+  filter: invert(76%) sepia(54%) saturate(535%) hue-rotate(350deg)
+    brightness(130%) contrast(100%) drop-shadow(0 0 2px #ffe0a699)
+    drop-shadow(0 0 4px #ffc96b88);
+}
+
+@media (max-width: 650px) {
+  .site-header {
+    padding-inline: 12px;
+    gap: 8px;
+  }
+
+  .header-controls {
+    gap: 10px;
+  }
+
+  .site-header nav {
+    gap: clamp(8px, 2.5vw, 14px);
+  }
+
+  .site-header nav a {
+    font-size: 10px;
+  }
+
+  .wordmark {
+    gap: 6px;
+    font-size: 18px;
+  }
+
+  .theme-switch {
+    width: 54px;
+    height: 44px;
+    padding: 3px;
+  }
+
+  .theme-switch-thumb {
+    width: 28px;
+    height: 32px;
+  }
+
+  .theme-switch img {
+    width: 22px;
+    height: 28px;
+  }
+
+  :root[data-theme='dark'] .theme-switch-thumb {
+    transform: translateX(18px);
+  }
+}
+
+@media (max-width: 360px) {
+  .site-header {
+    padding-inline: 8px;
+  }
+  .wordmark img {
+    width: 22px;
+    height: 22px;
+  }
+  .header-controls {
+    gap: 7px;
+  }
+  .site-header nav {
+    gap: 8px;
+  }
+  .site-header nav a {
+    font-size: 9px;
+  }
+}

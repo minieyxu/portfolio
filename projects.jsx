@@ -1,3 +1,4 @@
+import ReadyPage from './components/ReadyPage.jsx';
 import { useEffect } from 'react';
 import { createRoot } from 'react-dom/client';
 import Header from './components/Header.jsx';
@@ -64,4 +65,8 @@ function Projects() {
   );
 }
 
-createRoot(document.getElementById('root')).render(<Projects />);
+createRoot(document.getElementById('root')).render(
+  <ReadyPage>
+    <Projects />
+  </ReadyPage>,
+);

@@ -1,7 +1,6 @@
+import ReadyPage from './components/ReadyPage.jsx';
 import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { createRoot } from 'react-dom/client';
-import { LazyMotion, domAnimation, useReducedMotion } from 'motion/react';
-import * as m from 'motion/react-m';
 import { Collapsible } from '@astryxdesign/core/Collapsible';
 import { Theme } from '@astryxdesign/core/theme';
 import { neutralTheme } from '@astryxdesign/theme-neutral/built';
@@ -122,8 +121,7 @@ function CaseNavigation() {
     };
   }, []);
 
-  const siteLink =
-    'flex min-h-11 items-center transition-colors hover:text-seal motion-reduce:transition-none';
+  const siteLink = 'flex min-h-11 items-center hover:text-seal';
   return (
     <header ref={header} className="sticky top-0 z-20 bg-paper">
       <div className="flex h-14 items-center justify-between gap-2 border-b border-rule px-4 sm:h-16 sm:px-10">
@@ -157,7 +155,7 @@ function CaseNavigation() {
             Projects
           </a>
           <a className={siteLink} href="photo.html">
-            Photo
+            Gallery
           </a>
           <a className={siteLink} href="about.html">
             About
@@ -176,7 +174,7 @@ function CaseNavigation() {
                 <a
                   href={'#' + id}
                   aria-current={active === id ? 'location' : undefined}
-                  className="flex h-full items-center justify-center font-medium text-muted transition-colors hover:text-seal aria-[current=location]:font-semibold aria-[current=location]:text-seal motion-reduce:transition-none"
+                  className="flex h-full items-center justify-center font-medium text-muted hover:text-seal aria-[current=location]:font-semibold aria-[current=location]:text-seal"
                 >
                   {label}
                 </a>
@@ -190,7 +188,6 @@ function CaseNavigation() {
 }
 
 function Hero() {
-  const reducedMotion = useReducedMotion();
   const metadata = [
     ['Role', 'Researcher'],
     ['Method', 'Semi-structured interviews'],
@@ -202,24 +199,24 @@ function Hero() {
       aria-labelledby="case-title"
       className="px-5 pt-14 pb-16 text-center sm:px-8 sm:pt-22 sm:pb-20"
     >
-      <LazyMotion features={domAnimation}>
-        <m.div
-          initial={reducedMotion ? false : { opacity: 0.75, y: 5 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: reducedMotion ? 0 : 0.35 }}
+      <a
+        href="work.html#work"
+        className="mb-6 inline-flex min-h-11 items-center font-mono text-sm text-muted underline underline-offset-4 hover:text-seal"
+      >
+        ← Back to projects
+      </a>
+      <div>
+        <h1
+          id="case-title"
+          className="font-serif text-[clamp(2.75rem,8.5vw,7rem)] leading-none tracking-tight text-balance"
         >
-          <h1
-            id="case-title"
-            className="font-serif text-[clamp(2.75rem,8.5vw,7rem)] leading-none tracking-tight text-balance"
-          >
-            feeling in between
-          </h1>
-          <p className="mx-auto mt-5 max-w-lg text-lg leading-snug font-semibold text-balance sm:text-2xl">
-            How do you become an adult when taking on adult responsibilities
-            doesn’t necessarily make you feel like one?
-          </p>
-        </m.div>
-      </LazyMotion>
+          feeling in between
+        </h1>
+        <p className="mx-auto mt-5 max-w-lg text-lg leading-snug font-semibold text-balance sm:text-2xl">
+          How do you become an adult when taking on adult responsibilities
+          doesn’t necessarily make you feel like one?
+        </p>
+      </div>
       <dl className="mx-auto mt-8 grid w-fit max-w-full grid-cols-[auto_minmax(0,1fr)] items-baseline gap-x-4 gap-y-2 sm:mt-11 sm:gap-x-6">
         {metadata.map(([label, value]) => (
           <div key={label} className="contents">
@@ -461,4 +458,8 @@ function CaseStudy() {
   );
 }
 
-createRoot(document.getElementById('root')).render(<CaseStudy />);
+createRoot(document.getElementById('root')).render(
+  <ReadyPage>
+    <CaseStudy />
+  </ReadyPage>,
+);
