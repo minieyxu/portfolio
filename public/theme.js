@@ -2,6 +2,7 @@
   const key = 'minie-theme';
   const root = document.documentElement;
   let mode = 'light';
+  let transitionTimer;
 
   function updateControls() {
     const dark = mode === 'dark';
@@ -17,7 +18,19 @@
     });
   }
 
-  function applyTheme(value) {
+  function applyTheme(value, animate = false) {
+    if (
+      animate &&
+      !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    ) {
+      clearTimeout(transitionTimer);
+      root.classList.add('theme-changing');
+      // Establish the transition on the current colors before changing themes.
+      void root.offsetWidth;
+      transitionTimer = setTimeout(() => {
+        root.classList.remove('theme-changing');
+      }, 380);
+    }
     mode = value === 'dark' ? 'dark' : 'light';
     root.dataset.theme = mode;
     updateControls();
@@ -51,6 +64,6 @@
     } catch {
       // The current page can still switch themes when storage is unavailable.
     }
-    applyTheme(next);
+    applyTheme(next, true);
   });
 })();

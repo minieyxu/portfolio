@@ -21,3 +21,22 @@
   --placeholder: #36312d;
   --placeholder-ink: #e0d4c9;
 }
+
+/* Only animate an intentional theme change, never the initial page load. */
+@media (prefers-reduced-motion: no-preference) {
+  :root.theme-changing,
+  :root.theme-changing * {
+    transition-property: background-color, color, border-color, outline-color;
+    transition-duration: 320ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  :root.theme-changing .theme-switch-thumb {
+    transition-property:
+      transform, background-color, border-color, color, box-shadow;
+  }
+
+  :root.theme-changing img {
+    transition-property: filter;
+  }
+}
