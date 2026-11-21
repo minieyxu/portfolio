@@ -11,11 +11,11 @@ function isDarkTheme() {
   return document.documentElement.dataset.theme === 'dark';
 }
 
-export default function Header({ currentPage }) {
+export default function Header({ currentPage, as: Container = 'header' }) {
   const dark = useSyncExternalStore(subscribeToTheme, isDarkTheme);
   const themeLabel = `Switch to ${dark ? 'light' : 'dark'} mode`;
   return (
-    <header className="site-header">
+    <Container className="site-header">
       <a className="wordmark" href="index.html" aria-label="Minie Xu, home">
         <img src={seal} width="36" height="36" alt="" />
         <span className="full-name">minie xu</span>
@@ -61,6 +61,6 @@ export default function Header({ currentPage }) {
           </span>
         </button>
       </div>
-    </header>
+    </Container>
   );
 }

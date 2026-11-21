@@ -4,7 +4,8 @@ import { createRoot } from 'react-dom/client';
 import { Collapsible } from '@astryxdesign/core/Collapsible';
 import { Theme } from '@astryxdesign/core/theme';
 import { neutralTheme } from '@astryxdesign/theme-neutral/built';
-import seal from './assets/seal.png';
+import Header from './components/Header.jsx';
+import './site.css';
 import './case-study.css';
 
 const chapters = ['Overview', 'Approach', 'Findings', 'Reflection'];
@@ -121,47 +122,9 @@ function CaseNavigation() {
     };
   }, []);
 
-  const siteLink = 'flex min-h-11 items-center hover:text-seal';
   return (
     <header ref={header} className="sticky top-0 z-20 bg-paper">
-      <div className="flex h-14 items-center justify-between gap-2 border-b border-rule px-4 sm:h-16 sm:px-10">
-        <a
-          className="flex shrink-0 items-center gap-2 text-lg leading-none font-bold sm:gap-3 sm:text-2xl"
-          href="index.html"
-          aria-label="Minie Xu, home"
-        >
-          <span className="hidden sm:inline">minie xu</span>
-          <span className="sm:hidden">mx</span>
-          <img
-            src={seal}
-            alt=""
-            width="36"
-            height="36"
-            className="size-7 sm:size-9"
-          />
-        </a>
-        <nav
-          aria-label="Main navigation"
-          className="flex items-center gap-3 font-mono text-[10px] tracking-wide text-muted uppercase sm:gap-6 sm:text-xs"
-        >
-          <a className={siteLink} href="index.html">
-            Home
-          </a>
-          <a
-            className={siteLink + ' font-semibold text-ink'}
-            href="work.html#work"
-            aria-current="true"
-          >
-            Projects
-          </a>
-          <a className={siteLink} href="photo.html">
-            Gallery
-          </a>
-          <a className={siteLink} href="about.html">
-            About
-          </a>
-        </nav>
-      </div>
+      <Header currentPage="projects" as="div" />
       <nav
         aria-label="Case study sections"
         className="border-b border-rule px-3"

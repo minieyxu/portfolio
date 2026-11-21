@@ -1308,6 +1308,7 @@
       }
     </style>
     <script src="./theme.js"></script>
+    <link rel="stylesheet" href="./site.css" />
   </head>
   <body id="top">
     <a
@@ -1316,46 +1317,7 @@
       >Skip to content</a
     >
     <header class="sticky top-0 z-20 bg-paper">
-      <div
-        class="flex h-14 items-center justify-between gap-2 border-b border-rule px-4 sm:h-16 sm:px-10"
-      >
-        <a
-          class="flex shrink-0 items-center gap-2 text-lg leading-none font-bold sm:gap-3 sm:text-2xl"
-          href="./index.html"
-          aria-label="Minie Xu, home"
-          ><span class="hidden sm:inline">minie xu</span
-          ><span class="sm:hidden">mx</span
-          ><img
-            alt=""
-            width="36"
-            height="36"
-            class="size-7 sm:size-9"
-            src="./assets/seal.png"
-        /></a>
-        <nav
-          aria-label="Main navigation"
-          class="flex items-center gap-3 font-mono text-[10px] tracking-wide text-muted uppercase sm:gap-6 sm:text-xs"
-        >
-          <a
-            class="flex min-h-11 items-center hover:text-seal"
-            href="./index.html"
-            >Home</a
-          ><a
-            class="flex min-h-11 items-center hover:text-seal font-semibold text-ink"
-            href="./work.html#work"
-            aria-current="true"
-            >Projects</a
-          ><a
-            class="flex min-h-11 items-center hover:text-seal"
-            href="./photo.html"
-            >Gallery</a
-          ><a
-            class="flex min-h-11 items-center hover:text-seal"
-            href="./about.html"
-            >About</a
-          >
-        </nav>
-      </div>
+      <div id="case-site-header"></div>
       <nav aria-label="Case study sections" class="border-b border-rule px-3">
         <ul
           class="mx-auto grid h-11 max-w-3xl grid-cols-4 items-stretch text-center font-mono text-[11px] sm:text-sm"
@@ -2684,5 +2646,6 @@
         }),
       );
     </script>
+    <script type="module" src="./hotel-header.jsx"></script>
   </body>
 </html>
