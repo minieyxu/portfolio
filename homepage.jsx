@@ -24,7 +24,6 @@ function Home() {
             />
           </p>
           <p className="greeting">
-            <br />
             feel free to browse around
             <br />
             and get to know me!
