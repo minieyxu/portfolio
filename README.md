@@ -52,7 +52,7 @@ Static hosting publishes the contents of `dist/`. The site has five HTML entry p
 | Projects           | `work.html`                              | `projects.jsx`    |
 | Photo              | `photo.html`                             | `photo.jsx`       |
 | About              | `about.html`                             | `about.jsx`       |
-| Feeling In Between | `feeling_in_between_warm_editorial.html` | `case-study.jsx`  |
+| Feeling In Between | `feeling_in_between.html` | `case-study.jsx`  |
 
 Each HTML entry point provides metadata and an element where React renders the page.
 

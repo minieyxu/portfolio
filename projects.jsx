@@ -33,7 +33,7 @@ function Projects() {
         <div className="projects-grid">
           <a
             className="project-card"
-            href="feeling_in_between_warm_editorial.html"
+            href="feeling_in_between.html"
             aria-labelledby="between-title"
           >
             <div className="project-frame">

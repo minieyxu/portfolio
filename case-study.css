@@ -6,7 +6,7 @@
 @import '@astryxdesign/theme-neutral/theme.css';
 
 @source './case-study.jsx';
-@source './feeling_in_between_warm_editorial.html';
+@source './feeling_in_between.html';
 
 @theme inline {
   --font-sans: 'DM Sans', system-ui, sans-serif;

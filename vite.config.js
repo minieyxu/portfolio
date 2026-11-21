@@ -12,7 +12,7 @@ export default defineConfig({
         work: 'work.html',
         about: 'about.html',
         photo: 'photo.html',
-        between: 'feeling_in_between_warm_editorial.html',
+        between: 'feeling_in_between.html',
         hotel: 'finding-a-hotel.html',
       },
     },
