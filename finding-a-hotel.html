@@ -1,0 +1,2688 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>finding a hotel — Minie Xu</title>
+    <meta
+      name="description"
+      content="An individual HCI evaluation of hotel browsing interfaces, with five cognitive principles, proposed changes and their trade-offs."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;family=Instrument+Serif&amp;display=swap"
+    />
+    <style>
+      @layer properties {
+        @supports (((-webkit-hyphens: none)) and (not (margin-trim: block))) or
+          ((-moz-orient: inline) and (not (color: rgb(from red r g b)))) {
+          *,
+          ::before,
+          ::after,
+          ::backdrop {
+            --tw-space-y-reverse: 0;
+            --tw-divide-y-reverse: 0;
+            --tw-border-style: solid;
+            --tw-leading: initial;
+            --tw-font-weight: initial;
+            --tw-tracking: initial;
+            --tw-outline-style: solid;
+          }
+        }
+      }
+      @layer theme {
+        :root,
+        :host {
+          --spacing: 0.25rem;
+          --container-lg: 32rem;
+          --container-xl: 36rem;
+          --container-2xl: 42rem;
+          --container-3xl: 48rem;
+          --container-4xl: 56rem;
+          --text-xs: 0.75rem;
+          --text-xs--line-height: calc(1 / 0.75);
+          --text-sm: 0.875rem;
+          --text-sm--line-height: calc(1.25 / 0.875);
+          --text-base: 1rem;
+          --text-base--line-height: 1.5;
+          --text-lg: 1.125rem;
+          --text-lg--line-height: calc(1.75 / 1.125);
+          --text-xl: 1.25rem;
+          --text-xl--line-height: calc(1.75 / 1.25);
+          --text-2xl: 1.5rem;
+          --text-2xl--line-height: calc(2 / 1.5);
+          --text-3xl: 1.875rem;
+          --text-3xl--line-height: 1.2;
+          --text-4xl: 2.25rem;
+          --text-4xl--line-height: calc(2.5 / 2.25);
+          --text-5xl: 3rem;
+          --text-5xl--line-height: 1;
+          --text-6xl: 3.75rem;
+          --text-6xl--line-height: 1;
+          --font-weight-normal: 400;
+          --font-weight-medium: 500;
+          --font-weight-semibold: 600;
+          --font-weight-bold: 700;
+          --tracking-tight: -0.025em;
+          --tracking-wide: 0.025em;
+          --leading-tight: 1.25;
+          --leading-snug: 1.375;
+          --leading-relaxed: 1.625;
+          --radius-xl: 0.75rem;
+          --radius-2xl: 1rem;
+          --default-font-family: 'DM Sans', system-ui, sans-serif;
+          --default-mono-font-family: 'IBM Plex Mono', monospace;
+        }
+        :root {
+          color-scheme: light;
+          --paper: #f9f6f0;
+          --ink: #39332e;
+          --faded-ink: #6d6258;
+          --seal-red: #963f35;
+          --line: #ddd2c7;
+          --wash: #f0e9df;
+          --placeholder: #d8d8d8;
+          --placeholder-ink: #505050;
+        }
+        :root[data-theme='dark'] {
+          color-scheme: dark;
+          --paper: #24211e;
+          --ink: #f9f6f0;
+          --faded-ink: #c0b2a4;
+          --seal-red: #f1a499;
+          --line: #584d44;
+          --wash: #312b26;
+          --placeholder: #36312d;
+          --placeholder-ink: #e0d4c9;
+        }
+        @property --paper {
+          syntax: '<color>';
+          inherits: true;
+          initial-value: #f9f6f0;
+        }
+        @property --ink {
+          syntax: '<color>';
+          inherits: true;
+          initial-value: #39332e;
+        }
+        @property --faded-ink {
+          syntax: '<color>';
+          inherits: true;
+          initial-value: #6d6258;
+        }
+        @property --seal-red {
+          syntax: '<color>';
+          inherits: true;
+          initial-value: #963f35;
+        }
+        @property --line {
+          syntax: '<color>';
+          inherits: true;
+          initial-value: #ddd2c7;
+        }
+        @property --wash {
+          syntax: '<color>';
+          inherits: true;
+          initial-value: #f0e9df;
+        }
+        @property --placeholder {
+          syntax: '<color>';
+          inherits: true;
+          initial-value: #d8d8d8;
+        }
+        @property --placeholder-ink {
+          syntax: '<color>';
+          inherits: true;
+          initial-value: #505050;
+        }
+        @media (prefers-reduced-motion: no-preference) {
+          :root.theme-changing {
+            transition-property:
+              --paper, --ink, --faded-ink, --seal-red, --line, --wash,
+              --placeholder, --placeholder-ink;
+            transition-duration: 0.32s;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+          }
+          :root.theme-changing .theme-switch-thumb {
+            transition:
+              transform 0.32s cubic-bezier(0.4, 0, 0.2, 1),
+              background-color 0.32s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.32s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+          }
+          :root.theme-changing .painting,
+          :root.theme-changing .theme-switch img,
+          :root.theme-changing .coming-soon-icon {
+            transition: filter 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+          }
+        }
+      }
+      @layer base {
+        *,
+        ::after,
+        ::before,
+        ::backdrop {
+          box-sizing: border-box;
+          border: 0px solid;
+          margin: 0px;
+          padding: 0px;
+        }
+        ::file-selector-button {
+          box-sizing: border-box;
+          border: 0px solid;
+          margin: 0px;
+          padding: 0px;
+        }
+        html,
+        :host {
+          text-size-adjust: 100%;
+          tab-size: 4;
+          line-height: 1.5;
+          font-family: var(
+            --default-font-family,
+            -apple-system,
+            BlinkMacSystemFont,
+            'Segoe UI',
+            Roboto,
+            'Helvetica Neue',
+            'Noto Sans',
+            Arial,
+            sans-serif,
+            'Apple Color Emoji',
+            'Segoe UI Emoji',
+            'Segoe UI Symbol',
+            'Noto Color Emoji'
+          );
+          font-feature-settings: var(--default-font-feature-settings, normal);
+          font-variation-settings: var(
+            --default-font-variation-settings,
+            normal
+          );
+          -webkit-tap-highlight-color: transparent;
+        }
+        hr {
+          height: 0px;
+          color: inherit;
+          border-top-width: 1px;
+        }
+        abbr:where([title]) {
+          text-decoration: underline dotted;
+        }
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+          font-size: inherit;
+          font-weight: inherit;
+        }
+        a {
+          color: inherit;
+          text-decoration: inherit;
+        }
+        b,
+        strong {
+          font-weight: bolder;
+        }
+        code,
+        kbd,
+        samp,
+        pre {
+          font-family: var(
+            --default-mono-font-family,
+            ui-monospace,
+            SFMono-Regular,
+            Menlo,
+            Monaco,
+            Consolas,
+            'Liberation Mono',
+            'Courier New',
+            monospace
+          );
+          font-feature-settings: var(
+            --default-mono-font-feature-settings,
+            normal
+          );
+          font-variation-settings: var(
+            --default-mono-font-variation-settings,
+            normal
+          );
+          font-size: 1em;
+        }
+        small {
+          font-size: 80%;
+        }
+        sub,
+        sup {
+          vertical-align: baseline;
+          font-size: 75%;
+          line-height: 0;
+          position: relative;
+        }
+        sub {
+          bottom: -0.25em;
+        }
+        sup {
+          top: -0.5em;
+        }
+        table {
+          text-indent: 0px;
+          border-color: inherit;
+          border-collapse: collapse;
+        }
+        progress {
+          vertical-align: baseline;
+        }
+        summary {
+          display: list-item;
+        }
+        ol,
+        ul,
+        menu {
+          list-style: none;
+        }
+        img,
+        svg,
+        video,
+        canvas,
+        audio,
+        iframe,
+        embed,
+        object {
+          vertical-align: middle;
+          display: block;
+        }
+        img,
+        video {
+          max-width: 100%;
+          height: auto;
+        }
+        button,
+        input,
+        select,
+        optgroup,
+        textarea {
+          font: inherit;
+          letter-spacing: inherit;
+          color: inherit;
+          opacity: 1;
+          background-color: rgba(0, 0, 0, 0);
+          border-radius: 0px;
+        }
+        ::file-selector-button {
+          font: inherit;
+          letter-spacing: inherit;
+          color: inherit;
+          opacity: 1;
+          background-color: rgba(0, 0, 0, 0);
+          border-radius: 0px;
+        }
+        :where(select:is([multiple], [size])) optgroup {
+          font-weight: bolder;
+        }
+        :where(select:is([multiple], [size])) optgroup option {
+          padding-inline-start: 20px;
+        }
+        ::file-selector-button {
+          margin-inline-end: 4px;
+        }
+        ::placeholder {
+          opacity: 1;
+        }
+        @supports (not ((-webkit-appearance: -apple-pay-button))) or
+          (contain-intrinsic-size: 1px) {
+          ::placeholder {
+            color: currentcolor;
+          }
+          @supports (color: color-mix(in lab, red, red)) {
+            ::placeholder {
+              color: color-mix(currentcolor, transparent);
+            }
+          }
+        }
+        textarea {
+          resize: vertical;
+        }
+        ::-webkit-search-decoration {
+          appearance: none;
+        }
+        ::-webkit-date-and-time-value {
+          min-height: 1lh;
+          text-align: inherit;
+        }
+        ::-webkit-datetime-edit {
+          display: inline-flex;
+        }
+        ::-webkit-datetime-edit-fields-wrapper {
+          padding: 0px;
+        }
+        ::-webkit-datetime-edit {
+          padding-block: 0px;
+        }
+        ::-webkit-datetime-edit-year-field {
+          padding-block: 0px;
+        }
+        ::-webkit-datetime-edit-month-field {
+          padding-block: 0px;
+        }
+        ::-webkit-datetime-edit-day-field {
+          padding-block: 0px;
+        }
+        ::-webkit-datetime-edit-hour-field {
+          padding-block: 0px;
+        }
+        ::-webkit-datetime-edit-minute-field {
+          padding-block: 0px;
+        }
+        ::-webkit-datetime-edit-second-field {
+          padding-block: 0px;
+        }
+        ::-webkit-datetime-edit-millisecond-field {
+          padding-block: 0px;
+        }
+        ::-webkit-datetime-edit-meridiem-field {
+          padding-block: 0px;
+        }
+        ::-webkit-calendar-picker-indicator {
+          line-height: 1;
+        }
+        button,
+        input:where([type='button'], [type='reset'], [type='submit']) {
+          appearance: button;
+        }
+        ::file-selector-button {
+          appearance: button;
+        }
+        ::-webkit-inner-spin-button {
+          height: auto;
+        }
+        ::-webkit-outer-spin-button {
+          height: auto;
+        }
+        [hidden]:where(:not([hidden='until-found'])) {
+          display: none !important;
+        }
+        body {
+          background-color: var(--paper);
+          color: var(--ink);
+          -webkit-font-smoothing: antialiased;
+          font-family: 'DM Sans', system-ui, sans-serif;
+        }
+        :where(a, button):focus-visible {
+          outline-style: var(--tw-outline-style);
+          outline-offset: 4px;
+          outline-width: 2px;
+          outline-color: var(--seal-red);
+        }
+      }
+      @layer components;
+      @layer utilities {
+        .sr-only {
+          clip-path: inset(50%);
+          white-space: nowrap;
+          border-width: 0px;
+          width: 1px;
+          height: 1px;
+          margin: -1px;
+          padding: 0px;
+          position: absolute;
+          overflow: hidden;
+        }
+        .sticky {
+          position: sticky;
+        }
+        .top-0 {
+          top: 0px;
+        }
+        .z-20 {
+          z-index: 20;
+        }
+        .mx-auto {
+          margin-inline: auto;
+        }
+        .mt-1 {
+          margin-top: var(--spacing);
+        }
+        .mt-2 {
+          margin-top: calc(var(--spacing) * 2);
+        }
+        .mt-3 {
+          margin-top: calc(var(--spacing) * 3);
+        }
+        .mt-5 {
+          margin-top: calc(var(--spacing) * 5);
+        }
+        .mt-6 {
+          margin-top: calc(var(--spacing) * 6);
+        }
+        .mt-7 {
+          margin-top: calc(var(--spacing) * 7);
+        }
+        .mt-8 {
+          margin-top: calc(var(--spacing) * 8);
+        }
+        .mt-9 {
+          margin-top: calc(var(--spacing) * 9);
+        }
+        .mt-10 {
+          margin-top: calc(var(--spacing) * 10);
+        }
+        .mb-6 {
+          margin-bottom: calc(var(--spacing) * 6);
+        }
+        .contents {
+          display: contents;
+        }
+        .flex {
+          display: flex;
+        }
+        .grid {
+          display: grid;
+        }
+        .hidden {
+          display: none;
+        }
+        .inline-flex {
+          display: inline-flex;
+        }
+        .size-7 {
+          width: calc(var(--spacing) * 7);
+          height: calc(var(--spacing) * 7);
+        }
+        .h-11 {
+          height: calc(var(--spacing) * 11);
+        }
+        .h-14 {
+          height: calc(var(--spacing) * 14);
+        }
+        .h-full {
+          height: 100%;
+        }
+        .min-h-11 {
+          min-height: calc(var(--spacing) * 11);
+        }
+        .w-fit {
+          width: fit-content;
+        }
+        .max-w-2xl {
+          max-width: var(--container-2xl);
+        }
+        .max-w-3xl {
+          max-width: var(--container-3xl);
+        }
+        .max-w-4xl {
+          max-width: var(--container-4xl);
+        }
+        .max-w-full {
+          max-width: 100%;
+        }
+        .max-w-lg {
+          max-width: var(--container-lg);
+        }
+        .max-w-xl {
+          max-width: var(--container-xl);
+        }
+        .shrink-0 {
+          flex-shrink: 0;
+        }
+        .resize {
+          resize: both;
+        }
+        .scroll-mt-25 {
+          scroll-margin-top: calc(var(--spacing) * 25);
+        }
+        .grid-cols-4 {
+          grid-template-columns: repeat(4, minmax(0px, 1fr));
+        }
+        .grid-cols-\[auto_minmax\(0\,1fr\)\] {
+          grid-template-columns: auto minmax(0px, 1fr);
+        }
+        .flex-wrap {
+          flex-wrap: wrap;
+        }
+        .items-baseline {
+          align-items: baseline;
+        }
+        .items-center {
+          align-items: center;
+        }
+        .items-stretch {
+          align-items: stretch;
+        }
+        .justify-between {
+          justify-content: space-between;
+        }
+        .justify-center {
+          justify-content: center;
+        }
+        .gap-2 {
+          gap: calc(var(--spacing) * 2);
+        }
+        .gap-3 {
+          gap: calc(var(--spacing) * 3);
+        }
+        .gap-4 {
+          gap: calc(var(--spacing) * 4);
+        }
+        :where(.space-y-4 > :not(:last-child)) {
+          --tw-space-y-reverse: 0;
+          margin-block-start: calc(
+            calc(var(--spacing) * 4) * var(--tw-space-y-reverse)
+          );
+          margin-block-end: calc(
+            calc(var(--spacing) * 4) * calc(1 - var(--tw-space-y-reverse))
+          );
+        }
+        .gap-x-4 {
+          column-gap: calc(var(--spacing) * 4);
+        }
+        .gap-x-8 {
+          column-gap: calc(var(--spacing) * 8);
+        }
+        .gap-y-2 {
+          row-gap: calc(var(--spacing) * 2);
+        }
+        .gap-y-3 {
+          row-gap: calc(var(--spacing) * 3);
+        }
+        :where(.divide-y > :not(:last-child)) {
+          --tw-divide-y-reverse: 0;
+          border-bottom-style: var(--tw-border-style);
+          border-top-style: var(--tw-border-style);
+          border-top-width: calc(1px * var(--tw-divide-y-reverse));
+          border-bottom-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));
+        }
+        :where(.divide-rule > :not(:last-child)) {
+          border-color: var(--line);
+        }
+        .rounded-2xl {
+          border-radius: var(--radius-2xl);
+        }
+        .rounded-xl {
+          border-radius: var(--radius-xl);
+        }
+        .border {
+          border-style: var(--tw-border-style);
+          border-width: 1px;
+        }
+        .border-y {
+          border-block-style: var(--tw-border-style);
+          border-block-width: 1px;
+        }
+        .border-t {
+          border-top-style: var(--tw-border-style);
+          border-top-width: 1px;
+        }
+        .border-b {
+          border-bottom-style: var(--tw-border-style);
+          border-bottom-width: 1px;
+        }
+        .border-rule {
+          border-color: var(--line);
+        }
+        .bg-paper {
+          background-color: var(--paper);
+        }
+        .bg-wash {
+          background-color: var(--wash);
+        }
+        .px-3 {
+          padding-inline: calc(var(--spacing) * 3);
+        }
+        .px-4 {
+          padding-inline: calc(var(--spacing) * 4);
+        }
+        .px-5 {
+          padding-inline: calc(var(--spacing) * 5);
+        }
+        .py-2 {
+          padding-block: calc(var(--spacing) * 2);
+        }
+        .py-5 {
+          padding-block: calc(var(--spacing) * 5);
+        }
+        .py-7 {
+          padding-block: calc(var(--spacing) * 7);
+        }
+        .py-8 {
+          padding-block: calc(var(--spacing) * 8);
+        }
+        .py-14 {
+          padding-block: calc(var(--spacing) * 14);
+        }
+        .pt-2 {
+          padding-top: calc(var(--spacing) * 2);
+        }
+        .pt-6 {
+          padding-top: calc(var(--spacing) * 6);
+        }
+        .pt-14 {
+          padding-top: calc(var(--spacing) * 14);
+        }
+        .pb-4 {
+          padding-bottom: calc(var(--spacing) * 4);
+        }
+        .pb-16 {
+          padding-bottom: calc(var(--spacing) * 16);
+        }
+        .text-center {
+          text-align: center;
+        }
+        .text-left {
+          text-align: left;
+        }
+        .text-right {
+          text-align: right;
+        }
+        .font-mono {
+          font-family: 'IBM Plex Mono', monospace;
+        }
+        .font-sans {
+          font-family: 'DM Sans', system-ui, sans-serif;
+        }
+        .font-serif {
+          font-family: 'Instrument Serif', Georgia, serif;
+        }
+        .text-3xl {
+          font-size: var(--text-3xl);
+          line-height: var(--tw-leading, var(--text-3xl--line-height));
+        }
+        .text-5xl {
+          font-size: var(--text-5xl);
+          line-height: var(--tw-leading, var(--text-5xl--line-height));
+        }
+        .text-base {
+          font-size: var(--text-base);
+          line-height: var(--tw-leading, var(--text-base--line-height));
+        }
+        .text-lg {
+          font-size: var(--text-lg);
+          line-height: var(--tw-leading, var(--text-lg--line-height));
+        }
+        .text-sm {
+          font-size: var(--text-sm);
+          line-height: var(--tw-leading, var(--text-sm--line-height));
+        }
+        .text-xs {
+          font-size: var(--text-xs);
+          line-height: var(--tw-leading, var(--text-xs--line-height));
+        }
+        .text-\[10px\] {
+          font-size: 10px;
+        }
+        .text-\[11px\] {
+          font-size: 11px;
+        }
+        .text-\[clamp\(2\.75rem\,8\.5vw\,7rem\)\] {
+          font-size: clamp(2.75rem, 8.5vw, 7rem);
+        }
+        .leading-none {
+          --tw-leading: 1;
+          line-height: 1;
+        }
+        .leading-relaxed {
+          --tw-leading: var(--leading-relaxed);
+          line-height: var(--leading-relaxed);
+        }
+        .leading-snug {
+          --tw-leading: var(--leading-snug);
+          line-height: var(--leading-snug);
+        }
+        .leading-tight {
+          --tw-leading: var(--leading-tight);
+          line-height: var(--leading-tight);
+        }
+        .font-bold {
+          --tw-font-weight: var(--font-weight-bold);
+          font-weight: var(--font-weight-bold);
+        }
+        .font-medium {
+          --tw-font-weight: var(--font-weight-medium);
+          font-weight: var(--font-weight-medium);
+        }
+        .font-semibold {
+          --tw-font-weight: var(--font-weight-semibold);
+          font-weight: var(--font-weight-semibold);
+        }
+        .tracking-tight {
+          --tw-tracking: var(--tracking-tight);
+          letter-spacing: var(--tracking-tight);
+        }
+        .tracking-wide {
+          --tw-tracking: var(--tracking-wide);
+          letter-spacing: var(--tracking-wide);
+        }
+        .text-balance {
+          text-wrap: balance;
+        }
+        .text-ink {
+          color: var(--ink);
+        }
+        .text-muted {
+          color: var(--faded-ink);
+        }
+        .uppercase {
+          text-transform: uppercase;
+        }
+        .underline {
+          text-decoration-line: underline;
+        }
+        .underline-offset-4 {
+          text-underline-offset: 4px;
+        }
+        .first\:pt-0:first-child {
+          padding-top: 0px;
+        }
+        .last\:pb-0:last-child {
+          padding-bottom: 0px;
+        }
+        @media (hover: hover) {
+          .hover\:text-seal:hover {
+            color: var(--seal-red);
+          }
+        }
+        .focus\:not-sr-only:focus {
+          clip-path: none;
+          white-space: normal;
+          width: auto;
+          height: auto;
+          margin: 0px;
+          padding: 0px;
+          position: static;
+          overflow: visible;
+        }
+        .focus\:fixed:focus {
+          position: fixed;
+        }
+        .focus\:top-2:focus {
+          top: calc(var(--spacing) * 2);
+        }
+        .focus\:left-4:focus {
+          left: calc(var(--spacing) * 4);
+        }
+        .focus\:z-30:focus {
+          z-index: 30;
+        }
+        .focus\:bg-paper:focus {
+          background-color: var(--paper);
+        }
+        .focus\:p-3:focus {
+          padding: calc(var(--spacing) * 3);
+        }
+        .aria-\[current\=location\]\:font-semibold[aria-current='location'] {
+          --tw-font-weight: var(--font-weight-semibold);
+          font-weight: var(--font-weight-semibold);
+        }
+        .aria-\[current\=location\]\:text-seal[aria-current='location'] {
+          color: var(--seal-red);
+        }
+        @media (min-width: 40rem) {
+          .sm\:mt-9 {
+            margin-top: calc(var(--spacing) * 9);
+          }
+          .sm\:mt-11 {
+            margin-top: calc(var(--spacing) * 11);
+          }
+          .sm\:hidden {
+            display: none;
+          }
+          .sm\:inline {
+            display: inline;
+          }
+          .sm\:size-9 {
+            width: calc(var(--spacing) * 9);
+            height: calc(var(--spacing) * 9);
+          }
+          .sm\:h-16 {
+            height: calc(var(--spacing) * 16);
+          }
+          .sm\:scroll-mt-27 {
+            scroll-margin-top: calc(var(--spacing) * 27);
+          }
+          .sm\:grid-cols-2 {
+            grid-template-columns: repeat(2, minmax(0px, 1fr));
+          }
+          .sm\:gap-3 {
+            gap: calc(var(--spacing) * 3);
+          }
+          .sm\:gap-6 {
+            gap: calc(var(--spacing) * 6);
+          }
+          .sm\:gap-x-6 {
+            column-gap: calc(var(--spacing) * 6);
+          }
+          .sm\:px-8 {
+            padding-inline: calc(var(--spacing) * 8);
+          }
+          .sm\:px-10 {
+            padding-inline: calc(var(--spacing) * 10);
+          }
+          .sm\:px-12 {
+            padding-inline: calc(var(--spacing) * 12);
+          }
+          .sm\:py-9 {
+            padding-block: calc(var(--spacing) * 9);
+          }
+          .sm\:py-11 {
+            padding-block: calc(var(--spacing) * 11);
+          }
+          .sm\:py-20 {
+            padding-block: calc(var(--spacing) * 20);
+          }
+          .sm\:pt-22 {
+            padding-top: calc(var(--spacing) * 22);
+          }
+          .sm\:pb-20 {
+            padding-bottom: calc(var(--spacing) * 20);
+          }
+          .sm\:text-2xl {
+            font-size: var(--text-2xl);
+            line-height: var(--tw-leading, var(--text-2xl--line-height));
+          }
+          .sm\:text-4xl {
+            font-size: var(--text-4xl);
+            line-height: var(--tw-leading, var(--text-4xl--line-height));
+          }
+          .sm\:text-5xl {
+            font-size: var(--text-5xl);
+            line-height: var(--tw-leading, var(--text-5xl--line-height));
+          }
+          .sm\:text-6xl {
+            font-size: var(--text-6xl);
+            line-height: var(--tw-leading, var(--text-6xl--line-height));
+          }
+          .sm\:text-lg {
+            font-size: var(--text-lg);
+            line-height: var(--tw-leading, var(--text-lg--line-height));
+          }
+          .sm\:text-sm {
+            font-size: var(--text-sm);
+            line-height: var(--tw-leading, var(--text-sm--line-height));
+          }
+          .sm\:text-xl {
+            font-size: var(--text-xl);
+            line-height: var(--tw-leading, var(--text-xl--line-height));
+          }
+          .sm\:text-xs {
+            font-size: var(--text-xs);
+            line-height: var(--tw-leading, var(--text-xs--line-height));
+          }
+        }
+      }
+      @property --tw-space-y-reverse {
+        syntax: '*';
+        inherits: false;
+        initial-value: 0;
+      }
+      @property --tw-divide-y-reverse {
+        syntax: '*';
+        inherits: false;
+        initial-value: 0;
+      }
+      @property --tw-border-style {
+        syntax: '*';
+        inherits: false;
+        initial-value: solid;
+      }
+      @property --tw-leading {
+        syntax: '*';
+        inherits: false;
+      }
+      @property --tw-font-weight {
+        syntax: '*';
+        inherits: false;
+      }
+      @property --tw-tracking {
+        syntax: '*';
+        inherits: false;
+      }
+      @property --tw-outline-style {
+        syntax: '*';
+        inherits: false;
+        initial-value: solid;
+      }
+
+      /* HCI exhibits use the live portfolio's paper, wash, ink, rule and seal colors. */
+      body {
+        margin: 0;
+      }
+      .hci-proposal {
+        scroll-margin-top: 129px;
+      }
+      .hci-proposal-copy p + p {
+        margin-top: 16px;
+      }
+      .hci-exhibit-panel {
+        max-width: 100%;
+      }
+      .hci-comparison {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+      }
+      .exhibit {
+        margin: 0;
+        min-width: 0;
+        text-align: left;
+      }
+      .exhibit figcaption {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 9px;
+        font:
+          400 11px/1.5 'IBM Plex Mono',
+          monospace;
+        color: var(--faded-ink);
+      }
+      .zoom-note {
+        margin-top: 12px;
+        text-align: left;
+        color: var(--faded-ink);
+        font-size: 12px;
+      }
+      .image-button {
+        display: block;
+        width: 100%;
+        padding: 0;
+        border: 1px solid var(--line);
+        border-radius: 4px;
+        overflow: hidden;
+        background: #fff;
+        cursor: zoom-in;
+        line-height: 0;
+      }
+      .image-button img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+      .image-button.crop {
+        aspect-ratio: 6.9;
+      }
+      .hci-details {
+        margin-top: 24px;
+        text-align: left;
+      }
+      .hci-details summary {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 12px 0;
+        cursor: pointer;
+        list-style: none;
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--ink);
+      }
+      .hci-details summary::-webkit-details-marker {
+        display: none;
+      }
+      .hci-details summary::after {
+        content: '';
+        width: 8px;
+        height: 8px;
+        flex: none;
+        border-right: 1.5px solid var(--faded-ink);
+        border-bottom: 1.5px solid var(--faded-ink);
+        transform: rotate(45deg);
+        margin-right: 3px;
+      }
+      .hci-details[open] summary::after {
+        transform: rotate(225deg);
+      }
+      .hci-details summary:focus-visible {
+        outline: 2px solid var(--seal-red);
+        outline-offset: 4px;
+      }
+      .hci-reasoning {
+        padding: 6px 0 18px;
+        font-size: 16px;
+        line-height: 1.625;
+        color: var(--faded-ink);
+      }
+      .hci-reasoning h4 {
+        font:
+          500 12px/1.5 'IBM Plex Mono',
+          monospace;
+        color: var(--ink);
+        margin: 20px 0 9px;
+      }
+      .hci-reasoning h4:first-child {
+        margin-top: 3px;
+      }
+      .hci-reasoning p + p {
+        margin-top: 16px;
+      }
+      .hci-small {
+        font-size: 13px;
+        line-height: 1.625;
+        color: var(--faded-ink);
+        margin: 18px 0 0;
+      }
+      .hci-principles {
+        padding: 8px 0 18px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 22px;
+      }
+      .hci-principles dt {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--ink);
+        margin-bottom: 7px;
+      }
+      .hci-principles dd {
+        font-size: 15px;
+        line-height: 1.625;
+        color: var(--faded-ink);
+      }
+      .hci-principles > div:last-child {
+        grid-column: 1/-1;
+      }
+      .hci-table {
+        overflow-x: auto;
+        margin: 12px 0 18px;
+      }
+      table {
+        width: 100%;
+        min-width: 600px;
+        border-collapse: collapse;
+        font-size: 14px;
+        line-height: 1.625;
+      }
+      th,
+      td {
+        text-align: left;
+        vertical-align: top;
+        padding: 14px 12px;
+        border-bottom: 1px solid var(--line);
+      }
+      thead th {
+        font:
+          500 11px/1.5 'IBM Plex Mono',
+          monospace;
+        color: var(--faded-ink);
+      }
+      tbody th {
+        font-weight: 500;
+        width: 26%;
+      }
+      .sup {
+        font-size: 11px;
+        vertical-align: super;
+        color: var(--seal-red);
+      }
+      .hide {
+        display: none !important;
+      }
+      .source-line {
+        font-size: 13px;
+        line-height: 1.625;
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid var(--line);
+      }
+      .hci-reasoning ol {
+        list-style: decimal;
+        padding-left: 20px;
+        margin-top: 20px;
+      }
+      .hci-reasoning li {
+        margin-bottom: 12px;
+        font-size: 14px;
+      }
+      .saved-demo {
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        margin-top: 24px;
+        padding: 24px;
+        text-align: left;
+      }
+      .demo-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 18px;
+        margin-bottom: 18px;
+      }
+      .demo-head h4 {
+        font:
+          400 28px/1.1 'Instrument Serif',
+          Georgia,
+          serif;
+        color: #000;
+      }
+      .badge {
+        font:
+          400 10px/1.5 'IBM Plex Mono',
+          monospace;
+        color: var(--faded-ink);
+      }
+      .demo-tabs {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 18px;
+      }
+      .demo-tabs button,
+      .save-button {
+        font:
+          400 12px/1.5 'IBM Plex Mono',
+          monospace;
+        border: 1px solid var(--line);
+        border-radius: 4px;
+        padding: 8px 11px;
+        cursor: pointer;
+      }
+      .demo-tabs button[aria-selected='true'],
+      .save-button[aria-pressed='true'] {
+        background: var(--wash);
+        color: var(--seal-red);
+      }
+      .hotel-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      .hotel-card {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 17px;
+      }
+      .hotel-card h4 {
+        font:
+          400 24px/1.15 'Instrument Serif',
+          Georgia,
+          serif;
+        margin-bottom: 7px;
+        color: #000;
+      }
+      .hotel-card p,
+      .empty-state {
+        font-size: 12px;
+        line-height: 1.5;
+        color: var(--faded-ink);
+      }
+      .demo-feedback {
+        font-size: 12px;
+        line-height: 1.5;
+        min-height: 18px;
+        margin-top: 16px;
+        color: var(--faded-ink);
+      }
+      .lightbox {
+        margin: auto;
+        background: var(--paper);
+        color: var(--ink);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        max-width: min(94vw, 1700px);
+        max-height: 92vh;
+        padding: 18px;
+      }
+      .lightbox::backdrop {
+        background: rgba(57, 51, 46, 0.72);
+      }
+      .lightbox-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        margin-bottom: 15px;
+      }
+      .lightbox-head p {
+        font:
+          400 12px/1.5 'IBM Plex Mono',
+          monospace;
+        color: var(--faded-ink);
+      }
+      .lightbox-head button {
+        border: 1px solid var(--line);
+        border-radius: 4px;
+        padding: 6px 12px;
+        font:
+          400 13px/1.5 'IBM Plex Mono',
+          monospace;
+        cursor: pointer;
+      }
+      .lightbox img {
+        display: block;
+        max-width: 100%;
+        max-height: 76vh;
+        object-fit: contain;
+        margin: auto;
+      }
+      @media (max-width: 639px) {
+        .hci-proposal {
+          scroll-margin-top: 121px;
+        }
+        .hci-comparison,
+        .hci-principles,
+        .hotel-list {
+          grid-template-columns: 1fr;
+        }
+        .hci-principles > div:last-child {
+          grid-column: auto;
+        }
+        .zoom-note {
+          display: none;
+        }
+        .demo-head {
+          align-items: start;
+          flex-direction: column;
+        }
+        .saved-demo {
+          padding: 20px;
+        }
+      }
+      @media print {
+        header.sticky,
+        .zoom-note,
+        .save-button,
+        .demo-tabs,
+        footer {
+          display: none;
+        }
+        .hci-details:not([open]) > *:not(summary) {
+          display: block;
+        }
+        .hci-proposal,
+        .hci-exhibit-panel {
+          break-inside: avoid;
+        }
+        .lightbox {
+          display: none;
+        }
+      }
+    </style>
+    <script src="./theme.js"></script>
+  </head>
+  <body id="top">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-4 focus:z-30 focus:bg-paper focus:p-3"
+      >Skip to content</a
+    >
+    <header class="sticky top-0 z-20 bg-paper">
+      <div
+        class="flex h-14 items-center justify-between gap-2 border-b border-rule px-4 sm:h-16 sm:px-10"
+      >
+        <a
+          class="flex shrink-0 items-center gap-2 text-lg leading-none font-bold sm:gap-3 sm:text-2xl"
+          href="./index.html"
+          aria-label="Minie Xu, home"
+          ><span class="hidden sm:inline">minie xu</span
+          ><span class="sm:hidden">mx</span
+          ><img
+            alt=""
+            width="36"
+            height="36"
+            class="size-7 sm:size-9"
+            src="./assets/seal.png"
+        /></a>
+        <nav
+          aria-label="Main navigation"
+          class="flex items-center gap-3 font-mono text-[10px] tracking-wide text-muted uppercase sm:gap-6 sm:text-xs"
+        >
+          <a
+            class="flex min-h-11 items-center hover:text-seal"
+            href="./index.html"
+            >Home</a
+          ><a
+            class="flex min-h-11 items-center hover:text-seal font-semibold text-ink"
+            href="./work.html#work"
+            aria-current="true"
+            >Projects</a
+          ><a
+            class="flex min-h-11 items-center hover:text-seal"
+            href="./photo.html"
+            >Gallery</a
+          ><a
+            class="flex min-h-11 items-center hover:text-seal"
+            href="./about.html"
+            >About</a
+          >
+        </nav>
+      </div>
+      <nav aria-label="Case study sections" class="border-b border-rule px-3">
+        <ul
+          class="mx-auto grid h-11 max-w-3xl grid-cols-4 items-stretch text-center font-mono text-[11px] sm:text-sm"
+        >
+          <li>
+            <a
+              href="#overview"
+              class="flex h-full items-center justify-center font-medium text-muted hover:text-seal aria-[current=location]:font-semibold aria-[current=location]:text-seal"
+              >Overview</a
+            >
+          </li>
+          <li>
+            <a
+              href="#approach"
+              class="flex h-full items-center justify-center font-medium text-muted hover:text-seal aria-[current=location]:font-semibold aria-[current=location]:text-seal"
+              >Approach</a
+            >
+          </li>
+          <li>
+            <a
+              href="#findings"
+              class="flex h-full items-center justify-center font-medium text-muted hover:text-seal aria-[current=location]:font-semibold aria-[current=location]:text-seal"
+              >Findings</a
+            >
+          </li>
+          <li>
+            <a
+              href="#reflection"
+              class="flex h-full items-center justify-center font-medium text-muted hover:text-seal aria-[current=location]:font-semibold aria-[current=location]:text-seal"
+              >Reflection</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main id="main" tabindex="-1" class="scroll-mt-25 sm:scroll-mt-27">
+      <section
+        aria-labelledby="case-title"
+        class="px-5 pt-14 pb-16 text-center sm:px-8 sm:pt-22 sm:pb-20"
+      >
+        <a
+          href="./work.html#work"
+          class="mb-6 inline-flex min-h-11 items-center font-mono text-sm text-muted underline underline-offset-4 hover:text-seal"
+          >← Back to projects</a
+        >
+        <div>
+          <h1
+            id="case-title"
+            class="font-serif text-[clamp(2.75rem,8.5vw,7rem)] leading-none tracking-tight text-balance"
+          >
+            finding a hotel
+          </h1>
+          <p
+            class="mx-auto mt-5 max-w-lg text-lg leading-snug font-semibold text-balance sm:text-2xl"
+          >
+            How do interface choices shape the path from browsing to booking?
+          </p>
+        </div>
+        <dl
+          class="mx-auto mt-8 grid w-fit max-w-full grid-cols-[auto_minmax(0,1fr)] items-baseline gap-x-4 gap-y-2 sm:mt-11 sm:gap-x-6"
+        >
+          <div class="contents">
+            <dt
+              class="font-mono text-xs font-medium text-muted sm:text-sm text-right"
+            >
+              Role
+            </dt>
+            <dd class="text-left text-sm leading-snug sm:text-lg">
+              Interface analysis &amp; concept sketches
+            </dd>
+          </div>
+          <div class="contents">
+            <dt
+              class="font-mono text-xs font-medium text-muted sm:text-sm text-right"
+            >
+              Method
+            </dt>
+            <dd class="text-left text-sm leading-snug sm:text-lg">
+              Cognitive-principle evaluation
+            </dd>
+          </div>
+          <div class="contents">
+            <dt
+              class="font-mono text-xs font-medium text-muted sm:text-sm text-right"
+            >
+              Context
+            </dt>
+            <dd class="text-left text-sm leading-snug sm:text-lg">
+              SI 347 · Individual coursework
+            </dd>
+          </div>
+          <div class="contents">
+            <dt
+              class="font-mono text-xs font-medium text-muted sm:text-sm text-right"
+            >
+              Scope
+            </dt>
+            <dd class="text-left text-sm leading-snug sm:text-lg">
+              Proposed redesigns · Not yet user-tested
+            </dd>
+          </div>
+        </dl>
+      </section>
+      <section
+        id="overview"
+        aria-labelledby="overview-title"
+        class="scroll-mt-25 px-5 py-14 text-center sm:scroll-mt-27 sm:px-8 sm:py-20 border-y border-rule"
+      >
+        <h2
+          id="overview-title"
+          class="font-serif text-5xl leading-none tracking-tight text-balance sm:text-6xl"
+        >
+          what makes the next step clear?
+        </h2>
+        <div
+          class="mx-auto mt-6 max-w-2xl space-y-4 text-base leading-relaxed text-muted sm:text-lg"
+        >
+          <p>
+            I compared Super 8 and Ritz-Carlton to examine what visitors need to
+            notice, interpret, and remember while browsing hotels. I looked at
+            navigation, search controls, promotions, destination lists, and ways
+            to return to a hotel.
+          </p>
+          <p>
+            I used five cognitive principles to explain potential usability
+            concerns, then sketched targeted modifications. For each proposal, I
+            considered its intended benefit and what it might make harder to
+            discover.
+          </p>
+        </div>
+        <div
+          class="mx-auto mt-9 max-w-4xl rounded-2xl bg-wash px-5 py-8 sm:mt-11 sm:px-12 sm:py-11"
+        >
+          <p class="font-mono text-xs font-medium text-muted sm:text-sm">
+            Design question
+          </p>
+          <p
+            class="mx-auto mt-3 max-w-3xl font-serif text-3xl leading-tight text-balance sm:text-5xl"
+          >
+            How might the interface help someone find a hotel while making the
+            next step easier to understand?
+          </p>
+          <p
+            class="mx-auto mt-5 max-w-xl text-lg leading-snug font-semibold text-balance sm:text-xl"
+          >
+            A clearer primary task should still leave useful options
+            discoverable.
+          </p>
+          <p
+            class="mx-auto mt-3 max-w-xl text-base leading-relaxed text-muted sm:text-lg"
+          >
+            This is an individual academic evaluation. The concepts have not yet
+            been tested with users.
+          </p>
+        </div>
+      </section>
+      <section
+        id="approach"
+        aria-labelledby="approach-title"
+        class="scroll-mt-25 px-5 py-14 text-center sm:scroll-mt-27 sm:px-8 sm:py-20"
+      >
+        <h2
+          id="approach-title"
+          class="font-serif text-5xl leading-none tracking-tight text-balance sm:text-6xl"
+        >
+          how I evaluated the interfaces
+        </h2>
+        <p
+          class="mx-auto mt-5 max-w-xl text-base leading-relaxed text-muted sm:text-lg"
+        >
+          I compared the pages through five cognitive principles, identified
+          potential concerns, and proposed a modification with a clear
+          trade-off. The task framing connects each change to what someone might
+          be trying to do.
+        </p>
+        <div class="mx-auto mt-10 max-w-3xl">
+          <h3 class="font-serif text-3xl sm:text-4xl">
+            Two ways into hotel browsing
+          </h3>
+          <ul class="mt-5 grid gap-3 sm:grid-cols-2">
+            <li class="rounded-xl border border-rule px-5 py-5">
+              <h4 class="text-lg font-semibold">Super 8</h4>
+              <p class="mt-3 leading-relaxed">
+                I focused on starting a search: booking controls, secondary
+                travel categories, and the promotional call to action.
+              </p>
+            </li>
+            <li class="rounded-xl border border-rule px-5 py-5">
+              <h4 class="text-lg font-semibold">Ritz-Carlton</h4>
+              <p class="mt-3 leading-relaxed">
+                I focused on exploring geographic destination lists and a
+                proposed way to save hotels for a later visit.
+              </p>
+            </li>
+          </ul>
+        </div>
+        <details
+          class="hci-details mx-auto mt-6 max-w-3xl rounded-xl border border-rule px-5 py-2 text-left"
+        >
+          <summary>Read the five cognitive principles</summary>
+          <dl class="hci-principles">
+            <div>
+              <dt>Signifiers</dt>
+              <dd>
+                Signifiers communicate where and how an interaction can happen.
+                Here, the cue needs to communicate more than clickability: it
+                should also help set an expectation about what the click will
+                do.<a
+                  class="sup"
+                  href="#reference-norman"
+                  aria-label="Reference: Norman"
+                  >1</a
+                >
+              </dd>
+            </div>
+            <div>
+              <dt>Hick’s Law</dt>
+              <dd>
+                Hick’s Law relates the number of alternatives to decision time.
+                I used it as a reason to examine how many choices appear at
+                once. It does not establish that removing any navigation item
+                will make a real task faster; familiarity, grouping, and the
+                visitor’s goal still matter.<a
+                  class="sup"
+                  href="#reference-soegaard"
+                  aria-label="Reference: Soegaard"
+                  >2</a
+                >
+              </dd>
+            </div>
+            <div>
+              <dt>Selective attention & salience</dt>
+              <dd>
+                Salience describes how strongly an element stands out. Color,
+                size, contrast, and placement can attract attention even when an
+                element is secondary to the visitor’s immediate goal. I used
+                this principle to examine which action was most visually
+                prominent.<a
+                  class="sup"
+                  href="#reference-lee"
+                  aria-label="Reference: Lee and colleagues"
+                  >3</a
+                >
+              </dd>
+            </div>
+            <div>
+              <dt>Visual structure</dt>
+              <dd>
+                Visual structure uses grouping, alignment, spacing, and
+                hierarchy to communicate relationships. Making the region
+                visually distinct could help a visitor narrow attention to one
+                relevant group before reading its destinations.<a
+                  class="sup"
+                  href="#reference-johnson"
+                  aria-label="Reference: Johnson"
+                  >4</a
+                >
+              </dd>
+            </div>
+            <div>
+              <dt>Long-term memory</dt>
+              <dd>
+                Long-term memory is imperfect. A persistent saved list would act
+                as an external memory aid, allowing someone to recognize a
+                property they liked rather than recall its name and location
+                unaided.<a
+                  class="sup"
+                  href="#reference-johnson"
+                  aria-label="Reference: Johnson"
+                  >4</a
+                >
+              </dd>
+            </div>
+          </dl>
+        </details>
+        <details
+          class="hci-details mx-auto mt-6 max-w-3xl rounded-xl border border-rule px-5 py-2 text-left"
+        >
+          <summary>Compare the two interfaces</summary>
+          <div class="hci-table">
+            <table>
+              <caption class="hide">
+                Comparison of the two hotel interfaces in the assignment
+              </caption>
+              <thead>
+                <tr>
+                  <th>What I compared</th>
+                  <th>Super 8</th>
+                  <th>Ritz-Carlton</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Entry into browsing</th>
+                  <td>
+                    A prominent hotel-search area alongside a visible set of
+                    other travel categories.
+                  </td>
+                  <td>
+                    A reservation entry point alongside imagery and different
+                    travel experiences.
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Visual emphasis</th>
+                  <td>Red search controls and promotional calls to action.</td>
+                  <td>
+                    A restrained palette, large imagery, and more spacious
+                    sections.
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Organizing destinations</th>
+                  <td>The analysis focused on starting a hotel search.</td>
+                  <td>
+                    A long list of destinations grouped by geographic region.
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Returning later</th>
+                  <td colspan="2">
+                    In the reviewed pages, I did not identify a way to save
+                    individual hotels for a later visit.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="hci-small">
+            These observations describe the pages captured for the assignment.
+            They do not establish how people performed in a task.
+          </p>
+        </details>
+      </section>
+      <section
+        id="findings"
+        aria-labelledby="findings-title"
+        class="scroll-mt-25 px-5 py-14 text-center sm:scroll-mt-27 sm:px-8 sm:py-20 border-y border-rule bg-wash"
+      >
+        <h2
+          id="findings-title"
+          class="font-serif text-5xl leading-none tracking-tight text-balance sm:text-6xl"
+        >
+          what I would change
+        </h2>
+        <p
+          class="mx-auto mt-5 max-w-xl text-base leading-relaxed text-muted sm:text-lg"
+        >
+          Five proposals connect an interface observation to a cognitive
+          principle, a design decision, and a trade-off.
+        </p>
+        <ol class="mx-auto mt-7 max-w-3xl divide-y divide-rule sm:mt-9">
+          <li
+            id="signifiers"
+            class="hci-proposal py-7 first:pt-0 last:pb-0 sm:py-9"
+          >
+            <p class="font-mono text-xs font-medium text-muted sm:text-sm">
+              Proposal 1 · Signifiers
+            </p>
+            <h3
+              class="mx-auto mt-2 max-w-xl font-serif text-3xl leading-tight text-balance sm:text-4xl"
+            >
+              Know where a link will lead.
+            </h3>
+            <div
+              class="hci-proposal-copy mx-auto mt-3 max-w-xl text-base leading-relaxed text-muted sm:text-lg"
+            >
+              <p>
+                The travel-category bar placed internal options alongside links
+                that led to another website. In my analysis, the similar
+                presentation did not clearly signal that difference before a
+                visitor clicked.
+              </p>
+              <p>
+                I proposed adding an external-link icon to off-site options such
+                as Cruises, while keeping internal options unchanged. The intent
+                was to help visitors anticipate a change in destination.
+              </p>
+            </div>
+            <div
+              class="hci-exhibit-panel mx-auto mt-5 rounded-xl bg-paper px-5 py-5 sm:px-8"
+            >
+              <div class="hci-comparison">
+                <figure class="exhibit">
+                  <figcaption>
+                    <span>Original interface</span>
+                  </figcaption>
+                  <button
+                    class="image-button crop"
+                    data-enlarge
+                    aria-label="Enlarge: Super 8 travel-category navigation without external-link indicators"
+                  >
+                    <img
+                      src="./assets/projects/hotel/d0fd96b10a8f.png"
+                      alt="Super 8 travel-category navigation without external-link indicators"
+                      loading="lazy"
+                    />
+                  </button>
+                </figure>
+                <figure class="exhibit">
+                  <figcaption>
+                    <span>Proposed concept</span>
+                  </figcaption>
+                  <button
+                    class="image-button crop"
+                    data-enlarge
+                    aria-label="Enlarge: Proposed travel-category navigation with external-link indicators"
+                  >
+                    <img
+                      src="./assets/projects/hotel/bfae77fcc61a.png"
+                      alt="Proposed travel-category navigation with external-link indicators"
+                      loading="lazy"
+                    />
+                  </button>
+                </figure>
+              </div>
+              <p class="zoom-note">Select to enlarge</p>
+            </div>
+            <details
+              class="hci-details rounded-xl border border-rule px-5 py-2 text-left"
+            >
+              <summary>Why this change—and what it could cost</summary>
+              <div class="hci-reasoning">
+                <h4>The cognitive principle</h4>
+                <p>
+                  Signifiers communicate where and how an interaction can
+                  happen. Here, the cue needs to communicate more than
+                  clickability: it should also help set an expectation about
+                  what the click will do.<a
+                    class="sup"
+                    href="#reference-norman"
+                    aria-label="Reference: Norman"
+                    >1</a
+                  >
+                </p>
+                <h4>Design rationale</h4>
+                <p>
+                  An external-link cue makes a difference in behavior visible at
+                  the point of choice. It could support more predictable
+                  navigation without adding a separate explanation for every
+                  category.
+                </p>
+                <h4>The trade-off</h4>
+                <p>
+                  Icons add visual complexity, and their meaning may be
+                  unfamiliar. I would check whether visitors understand the cue
+                  and whether a short text label would communicate it more
+                  clearly.
+                </p>
+                <p>
+                  <b>What I would test:</b> Before clicking, can someone
+                  correctly predict which options stay on the hotel site and
+                  which lead elsewhere?
+                </p>
+                <p class="hci-small">
+                  This and the next proposal are alternatives for the same
+                  category bar: add cues if the bar remains visible, or move the
+                  categories into Travel Bundles.
+                </p>
+              </div>
+            </details>
+          </li>
+          <li
+            id="choices"
+            class="hci-proposal py-7 first:pt-0 last:pb-0 sm:py-9"
+          >
+            <p class="font-mono text-xs font-medium text-muted sm:text-sm">
+              Proposal 2 · Hick’s Law
+            </p>
+            <h3
+              class="mx-auto mt-2 max-w-xl font-serif text-3xl leading-tight text-balance sm:text-4xl"
+            >
+              Give hotel search a clearer starting point.
+            </h3>
+            <div
+              class="hci-proposal-copy mx-auto mt-3 max-w-xl text-base leading-relaxed text-muted sm:text-lg"
+            >
+              <p>
+                Someone arriving to book a hotel encounters destination, date,
+                guest, and rate controls alongside a second row of travel
+                categories. Those categories offer useful services, but they
+                also introduce other directions at the start of the hotel-search
+                task.
+              </p>
+              <p>
+                I proposed removing that category row from the booking area and
+                keeping those services under the existing Travel Bundles
+                navigation. This preserves access while changing when the
+                options are encountered.
+              </p>
+            </div>
+            <div
+              class="hci-exhibit-panel mx-auto mt-5 rounded-xl bg-paper px-5 py-5 sm:px-8"
+            >
+              <div class="hci-comparison">
+                <figure class="exhibit">
+                  <figcaption>
+                    <span>Original interface</span>
+                  </figcaption>
+                  <button
+                    class="image-button crop"
+                    data-enlarge
+                    aria-label="Enlarge: Super 8 hotel search with a row of secondary travel categories"
+                  >
+                    <img
+                      src="./assets/projects/hotel/d0fd96b10a8f.png"
+                      alt="Super 8 hotel search with a row of secondary travel categories"
+                      loading="lazy"
+                    />
+                  </button>
+                </figure>
+                <figure class="exhibit">
+                  <figcaption>
+                    <span>Proposed concept</span>
+                  </figcaption>
+                  <button
+                    class="image-button crop"
+                    data-enlarge
+                    aria-label="Enlarge: Proposed hotel search with secondary categories moved into Travel Bundles"
+                  >
+                    <img
+                      src="./assets/projects/hotel/9cc5c692e37a.png"
+                      alt="Proposed hotel search with secondary categories moved into Travel Bundles"
+                      loading="lazy"
+                    />
+                  </button>
+                </figure>
+              </div>
+              <p class="zoom-note">Select to enlarge</p>
+            </div>
+            <details
+              class="hci-details rounded-xl border border-rule px-5 py-2 text-left"
+            >
+              <summary>Why this change—and what it could cost</summary>
+              <div class="hci-reasoning">
+                <h4>The cognitive principle</h4>
+                <p>
+                  Hick’s Law relates the number of alternatives to decision
+                  time. I used it as a reason to examine how many choices appear
+                  at once. It does not establish that removing any navigation
+                  item will make a real task faster; familiarity, grouping, and
+                  the visitor’s goal still matter.<a
+                    class="sup"
+                    href="#reference-soegaard"
+                    aria-label="Reference: Soegaard"
+                    >2</a
+                  >
+                </p>
+                <h4>Design rationale</h4>
+                <p>
+                  The proposed entry point emphasizes the information needed for
+                  a hotel search. Visitors seeking another travel service would
+                  still have a route through the main navigation.
+                </p>
+                <h4>The trade-off</h4>
+                <p>
+                  Flights, cruises, and bundles could become less discoverable.
+                  A focused booking area is only useful if visitors can still
+                  find the services they came for.
+                </p>
+                <p>
+                  <b>What I would test:</b> Compare starting a hotel search and
+                  finding a flight-and-hotel bundle. Observe hesitation, wrong
+                  turns, task completion, and whether the secondary service
+                  remains discoverable.
+                </p>
+              </div>
+            </details>
+          </li>
+          <li
+            id="attention"
+            class="hci-proposal py-7 first:pt-0 last:pb-0 sm:py-9"
+          >
+            <p class="font-mono text-xs font-medium text-muted sm:text-sm">
+              Proposal 3 · Selective attention & salience
+            </p>
+            <h3
+              class="mx-auto mt-2 max-w-xl font-serif text-3xl leading-tight text-balance sm:text-4xl"
+            >
+              Let the primary action hold the spotlight.
+            </h3>
+            <div
+              class="hci-proposal-copy mx-auto mt-3 max-w-xl text-base leading-relaxed text-muted sm:text-lg"
+            >
+              <p>
+                The hotel-search controls appeared near a large offer panel with
+                its own Learn More button. I saw a potential competition between
+                the visitor’s booking task and the page’s promotional message.
+              </p>
+              <p>
+                I changed the promotional button into a smaller text link and
+                positioned it below the search action. The proposal changes the
+                relative emphasis of the promotion while leaving a way to
+                explore it.
+              </p>
+            </div>
+            <div
+              class="hci-exhibit-panel mx-auto mt-5 rounded-xl bg-paper px-5 py-5 sm:px-8"
+            >
+              <div class="hci-comparison">
+                <figure class="exhibit">
+                  <figcaption>
+                    <span>Original interface</span>
+                  </figcaption>
+                  <button
+                    class="image-button"
+                    data-enlarge
+                    aria-label="Enlarge: Super 8 offer panel with a prominent Learn More button"
+                  >
+                    <img
+                      src="./assets/projects/hotel/c6a93c36ac85.png"
+                      alt="Super 8 offer panel with a prominent Learn More button"
+                      loading="lazy"
+                    />
+                  </button>
+                </figure>
+                <figure class="exhibit">
+                  <figcaption>
+                    <span>Proposed concept</span>
+                  </figcaption>
+                  <button
+                    class="image-button"
+                    data-enlarge
+                    aria-label="Enlarge: Coursework sketch replacing the promotional button with a less prominent text link"
+                  >
+                    <img
+                      src="./assets/projects/hotel/05d0c95cc266.png"
+                      alt="Coursework sketch replacing the promotional button with a less prominent text link"
+                      loading="lazy"
+                    />
+                  </button>
+                </figure>
+              </div>
+              <p class="zoom-note">Select to enlarge</p>
+              <p class="hci-small">
+                The promotional view is an original coursework sketch exploring
+                hierarchy rather than a finished visual design.
+              </p>
+            </div>
+            <details
+              class="hci-details rounded-xl border border-rule px-5 py-2 text-left"
+            >
+              <summary>Why this change—and what it could cost</summary>
+              <div class="hci-reasoning">
+                <h4>The cognitive principle</h4>
+                <p>
+                  Salience describes how strongly an element stands out. Color,
+                  size, contrast, and placement can attract attention even when
+                  an element is secondary to the visitor’s immediate goal. I
+                  used this principle to examine which action was most visually
+                  prominent.<a
+                    class="sup"
+                    href="#reference-lee"
+                    aria-label="Reference: Lee and colleagues"
+                    >3</a
+                  >
+                </p>
+                <h4>Design rationale</h4>
+                <p>
+                  A quieter promotion could make the search controls easier to
+                  prioritize. The goal is a clearer relationship between the
+                  primary task and an optional offer.
+                </p>
+                <h4>The trade-off</h4>
+                <p>
+                  Visitors may miss a relevant discount, and the offer may
+                  receive less engagement. I would evaluate the ability to find
+                  an offer as well as the ability to start a booking.
+                </p>
+                <p>
+                  <b>What I would test:</b> Ask visitors to begin a search and
+                  then locate the offer. Observe which action they notice first
+                  and whether the promotion remains findable.
+                </p>
+              </div>
+            </details>
+          </li>
+          <li
+            id="structure"
+            class="hci-proposal py-7 first:pt-0 last:pb-0 sm:py-9"
+          >
+            <p class="font-mono text-xs font-medium text-muted sm:text-sm">
+              Proposal 4 · Visual structure
+            </p>
+            <h3
+              class="mx-auto mt-2 max-w-xl font-serif text-3xl leading-tight text-balance sm:text-4xl"
+            >
+              See the region. Then scan the destinations.
+            </h3>
+            <div
+              class="hci-proposal-copy mx-auto mt-3 max-w-xl text-base leading-relaxed text-muted sm:text-lg"
+            >
+              <p>
+                Ritz-Carlton’s destination list used differences in font size
+                and weight to distinguish geographic headings from individual
+                locations. In the long list I reviewed, those differences felt
+                subtle when scanning across multiple columns.
+              </p>
+              <p>
+                I added a light background highlight behind geographic headings
+                while leaving the location names unchanged. The proposal
+                strengthens the distinction between a category and the entries
+                within it.
+              </p>
+            </div>
+            <div
+              class="hci-exhibit-panel mx-auto mt-5 rounded-xl bg-paper px-5 py-5 sm:px-8"
+            >
+              <div class="hci-comparison">
+                <figure class="exhibit">
+                  <figcaption>
+                    <span>Original interface</span>
+                  </figcaption>
+                  <button
+                    class="image-button"
+                    data-enlarge
+                    aria-label="Enlarge: Ritz-Carlton geographic list with headings differentiated by typography"
+                  >
+                    <img
+                      src="./assets/projects/hotel/e08ed814ca8a.png"
+                      alt="Ritz-Carlton geographic list with headings differentiated by typography"
+                      loading="lazy"
+                    />
+                  </button>
+                </figure>
+                <figure class="exhibit">
+                  <figcaption>
+                    <span>Proposed concept</span>
+                  </figcaption>
+                  <button
+                    class="image-button"
+                    data-enlarge
+                    aria-label="Enlarge: Proposed geographic list with light highlights behind region headings"
+                  >
+                    <img
+                      src="./assets/projects/hotel/dddd11b7993b.png"
+                      alt="Proposed geographic list with light highlights behind region headings"
+                      loading="lazy"
+                    />
+                  </button>
+                </figure>
+              </div>
+              <p class="zoom-note">Select to enlarge</p>
+            </div>
+            <details
+              class="hci-details rounded-xl border border-rule px-5 py-2 text-left"
+            >
+              <summary>Why this change—and what it could cost</summary>
+              <div class="hci-reasoning">
+                <h4>The cognitive principle</h4>
+                <p>
+                  Visual structure uses grouping, alignment, spacing, and
+                  hierarchy to communicate relationships. Making the region
+                  visually distinct could help a visitor narrow attention to one
+                  relevant group before reading its destinations.<a
+                    class="sup"
+                    href="#reference-johnson"
+                    aria-label="Reference: Johnson"
+                    >4</a
+                  >
+                </p>
+                <h4>Design rationale</h4>
+                <p>
+                  A visitor looking for California could identify the heading
+                  first and then scan the places beneath it. The change works
+                  within the existing geographic organization rather than
+                  introducing a different navigation system.
+                </p>
+                <h4>The trade-off</h4>
+                <p>
+                  Repeated highlights could add clutter or compete with other
+                  elements. I would compare this approach with stronger spacing
+                  or typography to see which makes the hierarchy clearest.
+                </p>
+                <p>
+                  <b>What I would test:</b> Ask visitors to locate a destination
+                  in a named region. Compare search time and wrong selections
+                  across the original and proposed hierarchy.
+                </p>
+              </div>
+            </details>
+          </li>
+          <li
+            id="memory"
+            class="hci-proposal py-7 first:pt-0 last:pb-0 sm:py-9"
+          >
+            <p class="font-mono text-xs font-medium text-muted sm:text-sm">
+              Proposal 5 · Long-term memory
+            </p>
+            <h3
+              class="mx-auto mt-2 max-w-xl font-serif text-3xl leading-tight text-balance sm:text-4xl"
+            >
+              Make it easier to pick up where you left off.
+            </h3>
+            <div
+              class="hci-proposal-copy mx-auto mt-3 max-w-xl text-base leading-relaxed text-muted sm:text-lg"
+            >
+              <p>
+                Hotel browsing may take place across more than one visit. In the
+                pages I reviewed, I did not find an option for saving individual
+                properties, so returning to a hotel of interest could require
+                remembering its name or repeating the search.
+              </p>
+              <p>
+                I proposed heart controls for individual hotels and a Saved item
+                in the main navigation. The original assignment sketch
+                illustrates the navigation entry; the small walkthrough below
+                makes the proposed save-and-return interaction more concrete.
+              </p>
+            </div>
+            <div
+              class="hci-exhibit-panel mx-auto mt-5 rounded-xl bg-paper px-5 py-5 sm:px-8"
+            >
+              <div class="hci-comparison">
+                <figure class="exhibit">
+                  <figcaption>
+                    <span>Original interface</span>
+                  </figcaption>
+                  <button
+                    class="image-button"
+                    data-enlarge
+                    aria-label="Enlarge: Ritz-Carlton original main navigation"
+                  >
+                    <img
+                      src="./assets/projects/hotel/7840109abf79.png"
+                      alt="Ritz-Carlton original main navigation"
+                      loading="lazy"
+                    />
+                  </button>
+                </figure>
+                <figure class="exhibit">
+                  <figcaption>
+                    <span>Proposed concept</span>
+                  </figcaption>
+                  <button
+                    class="image-button"
+                    data-enlarge
+                    aria-label="Enlarge: Coursework sketch adding a Saved item to the navigation"
+                  >
+                    <img
+                      src="./assets/projects/hotel/4faa3c056380.png"
+                      alt="Coursework sketch adding a Saved item to the navigation"
+                      loading="lazy"
+                    />
+                  </button>
+                </figure>
+              </div>
+              <p class="zoom-note">Select to enlarge</p>
+            </div>
+            <details
+              class="hci-details rounded-xl border border-rule px-5 py-2 text-left"
+            >
+              <summary>Why this change—and what it could cost</summary>
+              <div class="hci-reasoning">
+                <h4>The cognitive principle</h4>
+                <p>
+                  Long-term memory is imperfect. A persistent saved list would
+                  act as an external memory aid, allowing someone to recognize a
+                  property they liked rather than recall its name and location
+                  unaided.<a
+                    class="sup"
+                    href="#reference-johnson"
+                    aria-label="Reference: Johnson"
+                    >4</a
+                  >
+                </p>
+                <h4>Design rationale</h4>
+                <p>
+                  The same hotel remains recognizable when someone returns to
+                  the list. The proposed feature shifts part of the remembering
+                  task from the visitor to the interface.
+                </p>
+                <h4>The trade-off</h4>
+                <p>
+                  Heart controls and a new navigation item add complexity. The
+                  concept also needs decisions about guest access, persistence,
+                  removal, and how clearly the saved state is communicated.
+                </p>
+                <p>
+                  <b>What I would test:</b> Can someone save a hotel, find it
+                  again, understand whether it is still saved, and remove it
+                  without confusion?
+                </p>
+              </div>
+            </details>
+            <div
+              class="saved-demo"
+              aria-label="Illustrative saved-hotels concept"
+            >
+              <div class="demo-head">
+                <h4>A saved place to return to.</h4>
+                <span class="badge">Illustrative concept walkthrough</span>
+              </div>
+              <div
+                class="demo-tabs"
+                role="tablist"
+                aria-label="Hotel concept views"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  id="browse-tab"
+                  aria-selected="true"
+                  aria-controls="browse-panel"
+                >
+                  Browse hotels</button
+                ><button
+                  type="button"
+                  role="tab"
+                  id="saved-tab"
+                  aria-selected="false"
+                  aria-controls="saved-panel"
+                  tabindex="-1"
+                >
+                  Saved hotels <span class="saved-count">0</span>
+                </button>
+              </div>
+              <div
+                id="browse-panel"
+                role="tabpanel"
+                aria-labelledby="browse-tab"
+              >
+                <div class="hotel-list">
+                  <article class="hotel-card">
+                    <div>
+                      <h4>Half Moon Bay</h4>
+                      <p>California · Example destination</p>
+                    </div>
+                    <button
+                      class="save-button"
+                      type="button"
+                      aria-label="Save Half Moon Bay"
+                      aria-pressed="false"
+                      data-save="Half Moon Bay"
+                      data-region="California"
+                    >
+                      Save
+                    </button>
+                  </article>
+                  <article class="hotel-card">
+                    <div>
+                      <h4>Amelia Island</h4>
+                      <p>Florida · Example destination</p>
+                    </div>
+                    <button
+                      class="save-button"
+                      type="button"
+                      aria-label="Save Amelia Island"
+                      aria-pressed="false"
+                      data-save="Amelia Island"
+                      data-region="Florida"
+                    >
+                      Save
+                    </button>
+                  </article>
+                </div>
+              </div>
+              <div
+                id="saved-panel"
+                class="hide"
+                role="tabpanel"
+                aria-labelledby="saved-tab"
+              >
+                <p class="empty-state">
+                  Save a destination in Browse hotels to see it here.
+                </p>
+                <div class="hotel-list saved-list"></div>
+              </div>
+              <p class="demo-feedback" aria-live="polite">
+                Save a destination, then open Saved hotels to revisit it.
+              </p>
+            </div>
+            <p class="hci-small">
+              Illustrative portfolio extension. Saving works within this page;
+              cross-visit persistence would need further design and
+              implementation.
+            </p>
+          </li>
+        </ol>
+      </section>
+      <section
+        id="reflection"
+        aria-labelledby="reflection-title"
+        class="scroll-mt-25 px-5 py-14 text-center sm:scroll-mt-27 sm:px-8 sm:py-20"
+      >
+        <h2
+          id="reflection-title"
+          class="font-serif text-5xl leading-none tracking-tight text-balance sm:text-6xl"
+        >
+          what I learned &amp; what I’d do next
+        </h2>
+        <div
+          class="mx-auto mt-6 max-w-2xl space-y-4 text-base leading-relaxed text-muted sm:text-lg"
+        >
+          <p>
+            The recurring question across these proposals is how much the
+            interface should show at once. Making hotel search more prominent
+            could help someone focus, while making a bundle or discount less
+            noticeable. Adding saved hotels could support memory, while
+            introducing another feature to understand.
+          </p>
+          <p>
+            Working through each principle made the reasoning behind a small
+            modification more explicit. Next, I would compare the original and
+            proposed interfaces using realistic tasks, checking whether the
+            primary task becomes clearer and whether useful secondary options
+            remain discoverable.
+          </p>
+        </div>
+        <div class="mx-auto mt-8 max-w-xl border-t border-rule pt-6">
+          <h3 class="font-serif text-3xl sm:text-4xl">
+            Questions for the next evaluation
+          </h3>
+          <p class="mt-3 text-base leading-relaxed text-muted sm:text-lg">
+            Can visitors anticipate an external link, start a hotel search, find
+            a destination, and return to a saved hotel? I would observe
+            hesitation, wrong turns, task completion, and expectations about the
+            interface.
+          </p>
+        </div>
+        <details
+          class="hci-details mx-auto mt-6 max-w-3xl rounded-xl border border-rule px-5 py-2 text-left"
+        >
+          <summary>Read the proposed testing tasks</summary>
+          <div class="hci-table">
+            <table class="test-table">
+              <caption class="hide">
+                Proposed tasks for future usability testing
+              </caption>
+              <thead>
+                <tr>
+                  <th>Proposed task</th>
+                  <th>Question</th>
+                  <th>What I would observe</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Choose a travel category</th>
+                  <td>Can visitors anticipate the link’s destination?</td>
+                  <td>
+                    Correct predictions and interpretation of the external-link
+                    cue.
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Begin a hotel search, then find a bundle</th>
+                  <td>
+                    Does greater focus preserve access to secondary services?
+                  </td>
+                  <td>
+                    Task completion, time, wrong turns, and bundle
+                    discoverability.
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Start booking, then locate the offer</th>
+                  <td>
+                    Is the primary action clearer without hiding a useful
+                    promotion?
+                  </td>
+                  <td>
+                    First action, hesitation, and success finding the offer.
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Find a hotel in a named region</th>
+                  <td>Does the hierarchy support scanning?</td>
+                  <td>
+                    Time to locate the relevant group and incorrect selections.
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Save, revisit, and remove a hotel</th>
+                  <td>Is the saved state understandable and useful?</td>
+                  <td>
+                    Task completion, recognition, and expectations about
+                    persistence.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </details>
+        <details
+          class="hci-details mx-auto mt-6 max-w-3xl rounded-xl border border-rule px-5 py-2 text-left"
+        >
+          <summary>Scope, limitations &amp; references</summary>
+          <div class="hci-reasoning">
+            <p>
+              The concerns come from inspecting captured interface states,
+              rather than participant sessions. The modifications are
+              independent sketches, including alternative approaches to the same
+              navigation bar. They do not represent an implemented redesign or
+              measured improvement.
+            </p>
+            <ol>
+              <li id="reference-norman">
+                Norman, D. (2013). <em>The Design of Everyday Things.</em> Basic
+                Books. Chapter 1. Used in the assignment’s discussion of
+                signifiers.
+              </li>
+              <li id="reference-soegaard">
+                Soegaard, M. (2020).
+                <em>Hick’s Law: Making the choice easier for users.</em>
+                Interaction Design Foundation. Used in the assignment’s
+                discussion of choice and decision time.
+              </li>
+              <li id="reference-lee">
+                Lee, J. D., Wickens, C. D., Liu, Y., & Boyle, L. N. (2017).
+                <em>Designing for People</em> (3rd ed.). Used in the
+                assignment’s discussion of selective attention and salience.
+              </li>
+              <li id="reference-johnson">
+                Johnson, J. (2014).
+                <em>Designing with the Mind in Mind</em> (2nd ed.). Morgan
+                Kaufmann. Used in the assignment’s discussion of visual
+                structure and long-term memory.
+              </li>
+            </ol>
+            <p class="source-line">
+              Adapted from my individual SI 347 assignment comparing Super 8 and
+              Ritz-Carlton. The original screenshot exhibits and five proposed
+              modifications are retained. The task-based organization, expanded
+              discussion, illustrative saved-hotels walkthrough, and future
+              testing plan were developed for this portfolio version.
+              Screenshots reflect the pages captured for the assignment. This is
+              independent academic work.
+            </p>
+          </div>
+        </details>
+      </section>
+    </main>
+    <footer
+      class="flex flex-wrap justify-center gap-x-8 gap-y-3 border-t border-rule px-5 py-7 font-mono text-xs sm:text-sm"
+    >
+      <a
+        class="underline underline-offset-4 hover:text-seal"
+        href="./work.html#work"
+        >← All projects</a
+      ><a class="underline underline-offset-4 hover:text-seal" href="#top"
+        >Back to top ↑</a
+      >
+    </footer>
+    <dialog class="lightbox" aria-label="Expanded interface exhibit">
+      <div class="lightbox-head">
+        <p class="lightbox-caption"></p>
+        <button type="button" class="close-lightbox">Close</button>
+      </div>
+      <img alt="" />
+    </dialog>
+    <script>
+      const dialog = document.querySelector('.lightbox');
+      const expanded = dialog.querySelector('img');
+      let returnFocus;
+      document.querySelectorAll('[data-enlarge]').forEach((button) =>
+        button.addEventListener('click', () => {
+          const source = button.querySelector('img');
+          returnFocus = button;
+          expanded.src = source.src;
+          expanded.alt = source.alt;
+          dialog.querySelector('.lightbox-caption').textContent = source.alt;
+          dialog.showModal();
+        }),
+      );
+      dialog
+        .querySelector('.close-lightbox')
+        .addEventListener('click', () => dialog.close());
+      dialog.addEventListener('click', (event) => {
+        if (event.target === dialog) {
+          const rect = dialog.getBoundingClientRect();
+          if (
+            event.clientX < rect.left ||
+            event.clientX > rect.right ||
+            event.clientY < rect.top ||
+            event.clientY > rect.bottom
+          )
+            dialog.close();
+        }
+      });
+      dialog.addEventListener('close', () => returnFocus?.focus());
+      const saved = new Map();
+      const browseTab = document.getElementById('browse-tab'),
+        savedTab = document.getElementById('saved-tab');
+      const browsePanel = document.getElementById('browse-panel'),
+        savedPanel = document.getElementById('saved-panel');
+      const live = document.querySelector('.demo-feedback');
+      function switchTab(tab) {
+        const browse = tab === browseTab;
+        browseTab.setAttribute('aria-selected', String(browse));
+        savedTab.setAttribute('aria-selected', String(!browse));
+        browseTab.tabIndex = browse ? 0 : -1;
+        savedTab.tabIndex = browse ? -1 : 0;
+        browsePanel.classList.toggle('hide', !browse);
+        savedPanel.classList.toggle('hide', browse);
+      }
+      [browseTab, savedTab].forEach((tab) => {
+        tab.addEventListener('click', () => switchTab(tab));
+        tab.addEventListener('keydown', (event) => {
+          if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+            event.preventDefault();
+            const next = tab === browseTab ? savedTab : browseTab;
+            switchTab(next);
+            next.focus();
+          }
+          if (event.key === 'Home') {
+            event.preventDefault();
+            switchTab(browseTab);
+            browseTab.focus();
+          }
+          if (event.key === 'End') {
+            event.preventDefault();
+            switchTab(savedTab);
+            savedTab.focus();
+          }
+        });
+      });
+      function renderSaved() {
+        document.querySelector('.saved-count').textContent = String(saved.size);
+        const list = document.querySelector('.saved-list');
+        list.replaceChildren();
+        document
+          .querySelector('.empty-state')
+          .classList.toggle('hide', saved.size > 0);
+        for (const [name, region] of saved) {
+          const card = document.createElement('article');
+          card.className = 'hotel-card';
+          const text = document.createElement('div'),
+            title = document.createElement('h4'),
+            subtitle = document.createElement('p'),
+            button = document.createElement('button');
+          title.textContent = name;
+          subtitle.textContent = region + ' · Saved destination';
+          text.append(title, subtitle);
+          button.type = 'button';
+          button.className = 'save-button';
+          button.textContent = 'Remove';
+          button.setAttribute(
+            'aria-label',
+            'Remove ' + name + ' from saved hotels',
+          );
+          button.addEventListener('click', () =>
+            toggleSave(name, region, true),
+          );
+          card.append(text, button);
+          list.append(card);
+        }
+        document.querySelectorAll('[data-save]').forEach((button) => {
+          const active = saved.has(button.dataset.save);
+          button.setAttribute('aria-pressed', String(active));
+          button.textContent = active ? 'Saved' : 'Save';
+          button.setAttribute(
+            'aria-label',
+            (active ? 'Unsave ' : 'Save ') + button.dataset.save,
+          );
+        });
+      }
+      function toggleSave(name, region, fromSaved = false) {
+        const wasSaved = saved.has(name);
+        if (wasSaved) saved.delete(name);
+        else saved.set(name, region);
+        renderSaved();
+        live.textContent =
+          name +
+          (wasSaved
+            ? ' removed from saved hotels.'
+            : ' added to saved hotels. Open Saved hotels to revisit it.');
+        if (fromSaved) {
+          const next = document.querySelector('.saved-list button');
+          if (next) next.focus();
+          else savedTab.focus();
+        }
+      }
+      document
+        .querySelectorAll('[data-save]')
+        .forEach((button) =>
+          button.addEventListener('click', () =>
+            toggleSave(button.dataset.save, button.dataset.region),
+          ),
+        );
+
+      const closeButton = document.querySelector('.close-lightbox');
+      closeButton.textContent = 'Close';
+
+      const chapterIds = ['overview', 'approach', 'findings', 'reflection'];
+      const chapterLinks = [
+        ...document.querySelectorAll('nav[aria-label="Case study sections"] a'),
+      ];
+      let chapterFrame = false;
+      function updateChapter() {
+        const limit =
+          document.querySelector('body>header').getBoundingClientRect().bottom +
+          20;
+        let active = null;
+        for (const id of chapterIds) {
+          const section = document.getElementById(id);
+          if (section.getBoundingClientRect().top <= limit) active = id;
+        }
+        for (const link of chapterLinks) {
+          if (link.hash === '#' + active)
+            link.setAttribute('aria-current', 'location');
+          else link.removeAttribute('aria-current');
+        }
+      }
+      window.addEventListener(
+        'scroll',
+        () => {
+          if (chapterFrame) return;
+          chapterFrame = true;
+          requestAnimationFrame(() => {
+            updateChapter();
+            chapterFrame = false;
+          });
+        },
+        { passive: true },
+      );
+      window.addEventListener('hashchange', updateChapter);
+      window.addEventListener('resize', updateChapter);
+      updateChapter();
+      document.querySelectorAll('a[href^="#reference-"]').forEach((link) =>
+        link.addEventListener('click', () => {
+          document.querySelectorAll('.hci-details').forEach((details) => {
+            if (details.querySelector(link.getAttribute('href')))
+              details.open = true;
+          });
+        }),
+      );
+    </script>
+  </body>
+</html>

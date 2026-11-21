@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { createRoot } from 'react-dom/client';
 import Header from './components/Header.jsx';
 import lotus from './assets/projects/lotus.jpg';
+import hotel from './assets/projects/hotel.jpg';
 import comingSoon from './assets/ui/coming-soon.png';
 
 function Projects() {
@@ -45,6 +46,21 @@ function Projects() {
               />
             </div>
             <h2 id="between-title">feeling in between</h2>
+          </a>
+          <a
+            className="project-card"
+            href="finding-a-hotel.html"
+            aria-labelledby="hotel-title"
+          >
+            <div className="project-frame">
+              <img
+                src={hotel}
+                width="5141"
+                height="3427"
+                alt="A pavilion surrounded by lush green trees above a misty garden pond"
+              />
+            </div>
+            <h2 id="hotel-title">finding a hotel</h2>
           </a>
           <article className="project-card" aria-labelledby="scent-title">
             <div className="project-frame project-placeholder">

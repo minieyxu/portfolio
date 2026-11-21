@@ -24,7 +24,7 @@
 .projects-grid {
   align-self: start;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   grid-template-rows: minmax(0, 1fr);
   gap: clamp(14px, 4vw, 54px);
   width: 100%;
@@ -86,7 +86,7 @@ a.project-card:hover h2 {
   }
   .projects-grid {
     grid-template-columns: minmax(0, 1fr);
-    grid-template-rows: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(3, minmax(0, 1fr));
     gap: clamp(12px, 3.5svh, 26px);
     max-width: 460px;
     max-height: 650px;
@@ -107,5 +107,24 @@ a.project-card:hover h2 {
   }
   .project-card {
     gap: 8px;
+  }
+}
+
+@media (max-width: 660px) and (orientation: portrait) {
+  html:has(.projects-page),
+  html:has(.projects-page) .pinned-page {
+    overflow: auto;
+  }
+  html:has(.projects-page) .pinned-page {
+    height: auto;
+    min-height: 100svh;
+  }
+  .projects-grid {
+    height: auto;
+    max-height: none;
+    grid-template-rows: none;
+  }
+  .project-frame {
+    aspect-ratio: 3 / 2;
   }
 }

@@ -13,6 +13,7 @@ export default defineConfig({
         about: 'about.html',
         photo: 'photo.html',
         between: 'feeling_in_between_warm_editorial.html',
+        hotel: 'finding-a-hotel.html',
       },
     },
   },
