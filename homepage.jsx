@@ -25,7 +25,9 @@ function Home() {
           </p>
           <p className="greeting">
             <br />
-            get to know me!
+            feel free to browse around
+            <br />
+            and get to know me!
           </p>
         </section>
         <div className="landscape">
